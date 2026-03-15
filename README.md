@@ -1,19 +1,31 @@
-# Fakturoid TypeScript SDK (backend, multi-tenant, Convex-ready)
+# Fakturoid TypeScript API
 
-Backendová TypeScript knihovna pro integraci s Fakturoid API v3, navržená pro
-multi-tenant aplikace (tisíce tenantů) a snadné použití v Convex backendu.
+TypeScript SDK for the [Fakturoid API v3](https://www.fakturoid.cz/api/v3), built for backend use cases, OAuth-based multi-tenant apps, and strongly typed integrations.
 
-## Základní koncepty
+The library is designed around tenant-scoped access to Fakturoid accounts. It handles OAuth token exchange, token refresh, account slug discovery, and exposes typed resource clients for the main Fakturoid API endpoints.
 
-- **Authorization Code OAuth2 flow** pro každého tenant uživatele.
-- **Abstraktní `FakturoidTokenStore`** – vy rozhodujete, kde a jak ukládáte tokeny
-  (Convex databáze, Postgres, Redis, ...).
-- **Account slug** – po dokončení OAuth se automaticky získá slug účtu (voláním
-  `GET /api/v3/user.json`) a uloží do tokenů. Všechny volání API pak používají
-  cestu `accounts/{slug}/...` podle dokumentace Fakturoid API v3.
-- **Doménové moduly**: `subjects`, `invoices`, `account`, `expenses`, `webhooks`, atd.
+## Features
 
-## Rychlý start
+- TypeScript-first API client with exported request and response types
+- OAuth 2.0 Authorization Code flow support
+- Multi-tenant architecture via pluggable token storage
+- Account slug resolution from `GET /api/v3/user.json`
+- Resource clients for invoices, subjects, expenses, generators, webhooks, inventory, and more
+- Backend-friendly design with no framework lock-in
+
+## Installation
+
+```bash
+npm install fakturoid-typescript-api
+```
+
+Peer dependency:
+
+```bash
+npm install -D bun-types
+```
+
+## Quick Start
 
 ```ts
 import { createFakturoidClient } from 'fakturoid-typescript-api';
@@ -29,61 +41,181 @@ const client = createFakturoidClient({
   tokenStore: yourTokenStoreImplementation,
 });
 
-// 1) Přesměrování uživatele na Fakturoid OAuth (URL: /api/v3/oauth)
-const url = client.getAuthorizationUrl(tenantId, state);
+const authorizationUrl = client.getAuthorizationUrl('tenant-123', 'opaque-state');
 
-// 2) Zpracování callbacku (např. v API route) – uloží tokeny a doplní slug z API
-await client.handleOAuthCallback({ code, state, tenantId });
+await client.handleOAuthCallback({
+  code: 'oauth-code',
+  state: 'opaque-state',
+  tenantId: 'tenant-123',
+});
 
-// 3) Práce s daty pro konkrétního tenanta (všechny requesty jdou na accounts/{slug}/...)
-const tenant = client.forTenant(tenantId);
-const account = await tenant.account.getAccountInfo();
-const invoices = await tenant.invoices.list();
-const subjects = await tenant.subjects.list();
+const fakturoid = client.forTenant('tenant-123');
+const account = await fakturoid.account.getAccountInfo();
+const invoices = await fakturoid.invoices.list();
+const subjects = await fakturoid.subjects.list();
 ```
 
-## Přehled podporovaných resources
+## Core Concepts
 
-Pro každého tenanta (`const t = client.forTenant(tenantId)`) máš k dispozici:
+### 1. Token Store
 
-- `t.subjects` – klienti/dodavatelé
-- `t.invoices` – faktury
-- `t.recurringGenerators` – opakované faktury
-- `t.generators` – jednorázové šablony
-- `t.invoiceMessages` – odesílání faktur e‑mailem
-- `t.invoicePayments` – platby faktur
-- `t.expenses` – nákladové doklady
-- `t.expensePayments` – platby nákladů
-- `t.bankAccounts` – bankovní účty
-- `t.inventoryItems` – skladové položky
-- `t.inventoryMoves` – skladové pohyby
-- `t.webhooks` – webhooky
-- `t.events` – události
-- `t.todos` – úkoly
-- `t.inboxFiles` – příchozí soubory
-- `t.users` – uživatelé
-- `t.numberFormats` – číselné řady
+You provide your own `FakturoidTokenStore` implementation. This keeps the SDK storage-agnostic and suitable for Convex, PostgreSQL, Redis, DynamoDB, or custom persistence layers.
 
-## Integrace s Convexem (náčrt)
+The SDK stores:
 
-V Convex komponentě vytvořte implementaci `FakturoidTokenStore` nad Convex DB a
-poskytněte helper funkce:
+- `accessToken`
+- `refreshToken`
+- `expiresAt`
+- `scope`
+- `fakturoidAccountId`
+- `fakturoidSlug`
 
-- `getFakturoidClient(ctx)` – vytvoří klienta s Convex token store.
-- `startFakturoidOAuth(ctx, tenantId)` – vrátí redirect URL.
-- `completeFakturoidOAuth(ctx, params)` – uloží tokeny po callbacku.
+### 2. Tenant-Scoped Resources
 
-Na to pak navážete své `query`/`mutation`/`action` funkce, které budou volat
-doménové metody `subjects`, `invoices` a `account`.
+After OAuth is completed, use `client.forTenant(tenantId)` to get resource clients bound to one tenant's tokens and Fakturoid account slug.
 
-## Testování
+### 3. Account Slug Resolution
 
-- **Unit testy:** `bun test` (spustí testy pro HttpClient, OAuthService, resources).
-- **Integrační testy:** testy v `tests/integration/` se spouští jen při nastavených
-  proměnných prostředí. Pro běh proti reálnému účtu nastav:
-  - `FAKTUROID_CLIENT_ID`
-  - `FAKTUROID_CLIENT_SECRET`
-  - `FAKTUROID_REFRESH_TOKEN` (získej jednorázově po dokončení OAuth – přihlášení
-    do Fakturoidu, schválení aplikace, z callbacku nebo z token store uložení).
+Fakturoid API v3 uses account-scoped routes in the form:
 
-Slug účtu se při integračních testech získá automaticky z API po refreshi tokenu.
+```text
+/api/v3/accounts/{slug}/...
+```
+
+The SDK resolves the slug automatically after OAuth and stores it in the token store, so resource calls can work without additional manual setup.
+
+## Authentication Flow
+
+Typical backend flow:
+
+1. Create the client with your app configuration and token store.
+2. Redirect the user to `client.getAuthorizationUrl(tenantId, state)`.
+3. Handle the callback and call `client.handleOAuthCallback(...)`.
+4. Use `client.forTenant(tenantId)` for all subsequent API calls.
+
+## Resource Clients
+
+Each tenant client exposes typed resource modules:
+
+- `account`
+- `bankAccounts`
+- `events`
+- `expensePayments`
+- `expenses`
+- `generators`
+- `inboxFiles`
+- `inventoryItems`
+- `inventoryMoves`
+- `invoiceMessages`
+- `invoicePayments`
+- `invoices`
+- `numberFormats`
+- `recurringGenerators`
+- `subjects`
+- `todos`
+- `users`
+- `webhooks`
+
+Example:
+
+```ts
+const tenant = client.forTenant('tenant-123');
+
+const invoice = await tenant.invoices.create({
+  subject_id: 123,
+  lines: [
+    {
+      name: 'Consulting',
+      quantity: 2,
+      unit_price: 2500,
+    },
+  ],
+});
+```
+
+## Type Safety
+
+The package exports shared domain types and resource-specific payloads, for example:
+
+- `NewInvoice`, `UpdateInvoice`, `Invoice`
+- `NewSubject`, `UpdateSubject`, `Subject`
+- `NewExpense`, `UpdateExpense`, `Expense`
+- `NewGenerator`, `RecurringGenerator`
+- `FakturoidDocumentLine`, `FakturoidVatRate`, `MoneyAmount`
+
+This makes it suitable for backend services, internal SDK wrappers, and typed app integrations.
+
+## Convex / Server Integration
+
+The SDK is framework-agnostic, but it fits naturally into backend runtimes such as:
+
+- Convex
+- Next.js API routes
+- Express
+- Fastify
+- NestJS
+- serverless functions
+
+For Convex-style usage, a typical pattern is:
+
+- `getFakturoidClient(ctx)` to construct the SDK with your token store
+- `startFakturoidOAuth(ctx, tenantId)` to initiate OAuth
+- `completeFakturoidOAuth(ctx, params)` to finalize OAuth and persist tokens
+
+## Documentation Alignment
+
+This repository is being aligned against the provided Fakturoid API v3 documentation with emphasis on:
+
+- required vs. optional fields
+- read-only vs. write-only fields
+- request payload correctness
+- response type fidelity
+
+Audit notes live in [docs/AUDIT.md](/Users/samuel/projects/fakturoid-typescript-api/docs/AUDIT.md).
+
+## Development
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Build:
+
+```bash
+npm run build
+```
+
+Type-check:
+
+```bash
+npm run typecheck
+```
+
+Test:
+
+```bash
+npm run test
+```
+
+Format and lint:
+
+```bash
+npm run format
+npm run lint
+```
+
+## Integration Tests
+
+Tests in `tests/integration/` require real Fakturoid credentials. Depending on your setup, configure environment variables such as:
+
+- `FAKTUROID_CLIENT_ID`
+- `FAKTUROID_CLIENT_SECRET`
+- `FAKTUROID_REFRESH_TOKEN`
+
+The SDK can obtain the account slug automatically after token refresh.
+
+## License
+
+MIT
