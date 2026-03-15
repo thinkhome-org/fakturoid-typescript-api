@@ -1,0 +1,32 @@
+{
+  "name": "fakturoid-typescript-api",
+  "version": "0.1.0",
+  "description": "Backend Fakturoid SDK v TypeScriptu připravené pro multi-tenant integraci a Convex.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "bun test"
+  },
+  "keywords": [
+    "fakturoid",
+    "sdk",
+    "typescript",
+    "oauth2"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.7",
+    "prettier": "^3.8.1",
+    "typescript": "^5.7.0"
+  },
+  "peerDependencies": {
+    "bun-types": "^1.1.0"
+  }
+}
