@@ -31,11 +31,13 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-          registry-url: https://npm.pkg.github.com
-          scope: "@thinkhome-org"
+          registries: |
+            @thinkhome-org:https://npm.pkg.github.com/|$GITHUB_TOKEN
       - env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BUN_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: bun install --frozen-lockfile
       - env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BUN_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: bun publish --registry https://npm.pkg.github.com
