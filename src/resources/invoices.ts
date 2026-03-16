@@ -219,6 +219,9 @@ export interface NewInvoice {
   language?: FakturoidLanguage | null;
   number_format_id?: number | null;
   bank_account_id?: number | null;
+  bank_account?: string | null;
+  iban?: string | null;
+  swift_bic?: string | null;
   payment_method?: FakturoidPaymentMethod;
   custom_payment_method?: string | null;
   iban_visibility?: FakturoidIbanVisibility;
