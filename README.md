@@ -223,7 +223,3 @@ Tests in `tests/integration/` require real Fakturoid credentials. Depending on y
 - `FAKTUROID_REFRESH_TOKEN`
 
 The SDK can obtain the account slug automatically after token refresh.
-
-## License
-
-MIT
