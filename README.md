@@ -15,6 +15,10 @@ The repository uses Bun as the primary package manager, test runner, and release
 - Resource clients for invoices, subjects, expenses, generators, webhooks, inventory, and more
 - Backend-friendly design with no framework lock-in
 
+## Documentation
+
+For comprehensive guides, implementation details, and examples covering Authentication, Token Storage, Resource Clients, and Type Safety, please visit our **[GitHub Wiki](https://github.com/thinkhome-org/fakturoid-typescript-api/wiki)**.
+
 ## Installation
 
 ```bash
