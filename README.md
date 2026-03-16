@@ -4,6 +4,8 @@ TypeScript SDK for the [Fakturoid API v3](https://www.fakturoid.cz/api/v3), buil
 
 The library is designed around tenant-scoped access to Fakturoid accounts. It handles OAuth token exchange, token refresh, account slug discovery, and exposes typed resource clients for the main Fakturoid API endpoints.
 
+The repository uses Bun as the primary package manager, test runner, and release toolchain. Node.js remains a supported runtime target for consumers of the published package. The package is published under the scoped name `@thinkhome-org/fakturoid-typescript-api`.
+
 ## Features
 
 - TypeScript-first API client with exported request and response types
@@ -16,19 +18,19 @@ The library is designed around tenant-scoped access to Fakturoid accounts. It ha
 ## Installation
 
 ```bash
-npm install fakturoid-typescript-api
+bun add @thinkhome-org/fakturoid-typescript-api
 ```
 
-Peer dependency:
+Node.js / npm fallback:
 
 ```bash
-npm install -D bun-types
+npm install @thinkhome-org/fakturoid-typescript-api
 ```
 
 ## Quick Start
 
 ```ts
-import { createFakturoidClient } from 'fakturoid-typescript-api';
+import { createFakturoidClient } from '@thinkhome-org/fakturoid-typescript-api';
 
 const client = createFakturoidClient({
   config: {
@@ -178,33 +180,39 @@ Audit notes live in [docs/AUDIT.md](/Users/samuel/projects/fakturoid-typescript-
 Install dependencies:
 
 ```bash
-npm install
+bun install
 ```
 
 Build:
 
 ```bash
-npm run build
+bun run build
 ```
 
 Type-check:
 
 ```bash
-npm run typecheck
+bun run typecheck
 ```
 
 Test:
 
 ```bash
-npm run test
+bun test
 ```
 
 Format and lint:
 
 ```bash
-npm run format
-npm run lint
+bun run format
+bun run lint
 ```
+
+## Publishing
+
+- `Publish to npmjs` publishes the package to the public npm registry using Bun-native `bun publish`.
+- `Publish to GitHub npm Registry` publishes the same scoped package to GitHub Packages using Bun-native registry configuration.
+- Both release workflows resolve the Bun version from `package.json` and do not depend on `setup-node`.
 
 ## Integration Tests
 

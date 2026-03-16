@@ -74,7 +74,7 @@ export interface NewInventoryItem {
     max_quantity?: MoneyAmount;
     allow_below_zero?: boolean;
     native_purchase_price?: MoneyAmount;
-    native_retail_price?: MoneyAmount;
+    native_retail_price: MoneyAmount;
     vat_rate?: InventoryItemVatRate;
     supply_type?: InventoryItemSupplyType;
     private_note?: string;

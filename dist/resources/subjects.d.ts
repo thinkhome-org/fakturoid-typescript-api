@@ -22,7 +22,6 @@ export interface Subject {
     local_vat_no?: string | null;
     phone?: string | null;
     street?: string;
-    street2?: string | null;
     city?: string;
     zip?: string;
     country?: string;
@@ -69,14 +68,13 @@ export interface NewSubject extends SubjectSettings {
     name: string;
     type?: SubjectType;
     custom_id?: string | null;
-    user_id?: number | null;
     full_name?: string | null;
+    legal_form?: string | null;
     registration_no?: string | null;
     vat_no?: string | null;
     local_vat_no?: string | null;
     phone?: string | null;
     street?: string | null;
-    street2?: string | null;
     city?: string | null;
     zip?: string | null;
     country?: string | null;

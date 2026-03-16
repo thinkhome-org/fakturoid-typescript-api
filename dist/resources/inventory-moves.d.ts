@@ -41,6 +41,8 @@ export interface NewInventoryMove {
     purchase_currency?: string;
     retail_price?: string | number;
     retail_currency?: string;
+    native_purchase_price?: string | number;
+    native_retail_price?: string | number;
     private_note?: string;
     [key: string]: unknown;
 }

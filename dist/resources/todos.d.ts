@@ -1,6 +1,6 @@
 import type { HttpClient } from '../http/http-client';
 import type { DateString, FakturoidAuth, PaginationOptions } from '../types/common';
-export type TodoRelatedObjectType = 'Invoice' | 'Expense' | 'Subject' | 'Generator' | 'RecurringGenerator' | 'Estimate' | 'ExpenseGenerator';
+export type TodoRelatedObjectType = 'Invoice' | 'Expense' | 'Subject' | 'Generator' | 'RecurringGenerator' | 'ExpenseGenerator';
 /**
  * Object related to a todo (e.g. Invoice, Subject, Expense).
  * @see https://www.fakturoid.cz/api/v3/todos

@@ -10,8 +10,6 @@ export interface Generator {
     native_subtotal?: MoneyAmount;
     subject_id?: number;
     order_number?: string | null;
-    valid_from?: DateString;
-    valid_to?: DateString;
     due?: number | null;
     note?: string | null;
     number_format_id?: number | null;
@@ -28,7 +26,6 @@ export interface Generator {
     custom_payment_method?: string | null;
     language?: FakturoidLanguage | null;
     vat_price_mode?: FakturoidVatPriceMode;
-    round_total?: boolean;
     rounding_adjustment?: MoneyAmount;
     bank_account_id?: number | null;
     exchange_rate?: MoneyAmount | null;
@@ -50,16 +47,13 @@ export interface ListGeneratorsOptions extends PaginationOptions {
 }
 export interface NewGenerator {
     custom_id?: string | null;
-    name?: string;
-    subject_id?: number;
+    name: string;
+    subject_id: number;
     order_number?: string | null;
-    valid_from?: DateString;
-    valid_to?: DateString;
     due?: number | null;
     note?: string | null;
     number_format_id?: number | null;
     footer_note?: string | null;
-    legacy_bank_details?: FakturoidLegacyBankDetails | null;
     iban_visibility?: FakturoidIbanVisibility;
     proforma?: boolean;
     paypal?: boolean;

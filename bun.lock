@@ -6,11 +6,9 @@
       "name": "fakturoid-typescript-api",
       "devDependencies": {
         "@biomejs/biome": "^2.4.7",
+        "bun-types": "^1.3.10",
         "prettier": "^3.8.1",
         "typescript": "^5.7.0",
-      },
-      "peerDependencies": {
-        "bun-types": "^1.1.0",
       },
     },
   },

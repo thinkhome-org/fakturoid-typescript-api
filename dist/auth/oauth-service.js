@@ -232,7 +232,7 @@ export class OAuthService {
                     message = body.error_description;
                 }
                 else if (typeof body.error === 'string') {
-                    message = body.error_description ? String(body.error_description) : body.error;
+                    message = body.error;
                 }
             }
         }

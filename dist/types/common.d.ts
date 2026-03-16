@@ -143,7 +143,6 @@ export interface FakturoidDocumentLine {
     unit_name?: string | null;
     unit_price?: MoneyAmount;
     vat_rate?: FakturoidVatRate;
-    vat_price_mode?: FakturoidVatPriceMode;
     unit_price_without_vat?: MoneyAmount;
     unit_price_with_vat?: MoneyAmount;
     total_price_without_vat?: MoneyAmount;

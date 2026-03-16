@@ -33,7 +33,6 @@ export interface RecurringGenerator {
     custom_payment_method?: string | null;
     language?: FakturoidLanguage | null;
     vat_price_mode?: FakturoidVatPriceMode;
-    round_total?: boolean;
     rounding_adjustment?: MoneyAmount;
     bank_account_id?: number | null;
     exchange_rate?: MoneyAmount | null;
@@ -55,21 +54,19 @@ export interface ListRecurringGeneratorsOptions extends PaginationOptions {
 }
 export interface NewRecurringGenerator {
     custom_id?: string | null;
-    name?: string;
+    name: string;
     next_occurrence_on?: DateString | null;
-    active?: boolean;
-    subject_id?: number;
-    months_period?: number | string;
+    subject_id: number;
+    months_period: number | string;
     due?: number | null;
     order_number?: string | null;
-    start_date?: DateString | null;
+    start_date: DateString;
     end_date?: DateString | null;
     note?: string | null;
     send_email?: boolean;
     last_day_in_month?: boolean;
     number_format_id?: number | null;
     footer_note?: string | null;
-    legacy_bank_details?: FakturoidLegacyBankDetails | null;
     iban_visibility?: FakturoidIbanVisibility;
     proforma?: boolean;
     paypal?: boolean;
