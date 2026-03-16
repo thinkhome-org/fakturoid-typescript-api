@@ -31,9 +31,12 @@ jobs:
         with:
           bun-version: latest
           registry-url: https://registry.npmjs.org
+      - run: bun install --frozen-lockfile
+      - name: Set up npm authentication
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: printf '//registry.npmjs.org/:_authToken=%s\n' "$NPM_TOKEN" > ~/.npmrc
       - env:
-          BUN_AUTH_TOKEN: ${{ secrets.npm_token }}
-        run: bun install --frozen-lockfile
-      - env:
-          BUN_AUTH_TOKEN: ${{ secrets.npm_token }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          BUN_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: bun publish
