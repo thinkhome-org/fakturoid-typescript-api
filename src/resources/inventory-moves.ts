@@ -89,7 +89,8 @@ export class InventoryMovesResource {
     if (options.until) query.set('until', options.until);
     if (options.updated_since) query.set('updated_since', options.updated_since);
     if (options.updated_until) query.set('updated_until', options.updated_until);
-    if (options.inventory_item_id != null) query.set('inventory_item_id', String(options.inventory_item_id));
+    if (options.inventory_item_id != null)
+      query.set('inventory_item_id', String(options.inventory_item_id));
 
     return this.http.request<InventoryMove[]>({
       method: 'GET',
@@ -133,7 +134,7 @@ export class InventoryMovesResource {
   public async update(
     inventoryItemId: number,
     id: number,
-    data: UpdateInventoryMove,
+    data: UpdateInventoryMove
   ): Promise<InventoryMove> {
     const { accessToken, slug } = await this.getAuth();
     return this.http.request<InventoryMove>({
@@ -161,7 +162,9 @@ export class InventoryMovesResource {
    * Async generator that iterates through all pages of inventory moves.
    * Yields individual inventory moves. Use with `for await...of`.
    */
-  public listAll(options: Omit<ListInventoryMovesOptions, 'page'> = {}): AsyncGenerator<InventoryMove, void, undefined> {
+  public listAll(
+    options: Omit<ListInventoryMovesOptions, 'page'> = {}
+  ): AsyncGenerator<InventoryMove, void, undefined> {
     return paginateAll((page) => this.list({ ...options, page }));
   }
 }

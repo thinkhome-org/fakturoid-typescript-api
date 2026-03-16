@@ -2,42 +2,42 @@ Zavřít menu
 
 [Fakturoid web →](/)
 
-*   [Introduction](/api/v3)
-*   [Changelog](/api/v3/changelog)
-*   [Authorization](/api/v3/authorization)
-*   [Users](/api/v3/users)
-*   [Account](/api/v3/account)
-*   [Bank Accounts](/api/v3/bank-accounts)
-*   [Number Formats](/api/v3/number-formats)
-*   [Subjects](/api/v3/subjects)
-*   [Invoices](/api/v3/invoices)
-*   [Invoice Payments](/api/v3/invoice-payments)
-*   [Invoice Messages](/api/v3/invoice-messages)
-*   [Expenses](/api/v3/expenses)
-*   [Expense Payments](/api/v3/expense-payments)
-*   [Inbox Files](/api/v3/inbox-files)
-*   [Inventory Items](/api/v3/inventory-items)
-    *   [Attributes](#attributes)
-    *   [Items Index](#items-index)
-    *   [Archived Items](#archived-items)
-    *   [Low-Quantity Items](#low-quantity-items)
-    *   [Items Search](#items-search)
-    *   [Item Detail](#item-detail)
-    *   [Create Item](#create-item)
-    *   [Update Item](#update-item)
-    *   [Delete Item](#delete-item)
-    *   [Archive Item](#archive-item)
-    *   [Unarchive Item](#unarchive-item)
-*   [Inventory Moves](/api/v3/inventory-moves)
-*   [Generators](/api/v3/generators)
-*   [Recurring Generators](/api/v3/recurring-generators)
-*   [Events](/api/v3/events)
-*   [Todos](/api/v3/todos)
-*   [Webhooks](/api/v3/webhooks)
+- [Introduction](/api/v3)
+- [Changelog](/api/v3/changelog)
+- [Authorization](/api/v3/authorization)
+- [Users](/api/v3/users)
+- [Account](/api/v3/account)
+- [Bank Accounts](/api/v3/bank-accounts)
+- [Number Formats](/api/v3/number-formats)
+- [Subjects](/api/v3/subjects)
+- [Invoices](/api/v3/invoices)
+- [Invoice Payments](/api/v3/invoice-payments)
+- [Invoice Messages](/api/v3/invoice-messages)
+- [Expenses](/api/v3/expenses)
+- [Expense Payments](/api/v3/expense-payments)
+- [Inbox Files](/api/v3/inbox-files)
+- [Inventory Items](/api/v3/inventory-items)
+  - [Attributes](#attributes)
+  - [Items Index](#items-index)
+  - [Archived Items](#archived-items)
+  - [Low-Quantity Items](#low-quantity-items)
+  - [Items Search](#items-search)
+  - [Item Detail](#item-detail)
+  - [Create Item](#create-item)
+  - [Update Item](#update-item)
+  - [Delete Item](#delete-item)
+  - [Archive Item](#archive-item)
+  - [Unarchive Item](#unarchive-item)
+- [Inventory Moves](/api/v3/inventory-moves)
+- [Generators](/api/v3/generators)
+- [Recurring Generators](/api/v3/recurring-generators)
+- [Events](/api/v3/events)
+- [Todos](/api/v3/todos)
+- [Webhooks](/api/v3/webhooks)
 
 # Inventory Items
 
-* * *
+---
 
 ## [Attributes](#attributes)
 
@@ -220,20 +220,19 @@ Read-only attribute
 
 Date and time of last item update
 
-*   Required attribute
-    
-    Required attribute (must always be present).
-    
-*   Read-only attribute
-    
-    Read-only attribute (cannot be changed).
-    
-*   Write-only attribute
-    
-    Write-only attribute (will not be returned).
-    
-*   Unmarked attributes are optional and can be omitted during request.
-    
+- Required attribute
+
+  Required attribute (must always be present).
+
+- Read-only attribute
+
+  Read-only attribute (cannot be changed).
+
+- Write-only attribute
+
+  Write-only attribute (will not be returned).
+
+- Unmarked attributes are optional and can be omitted during request.
 
 ### [Retail Prices](#retail-prices)
 
@@ -269,7 +268,7 @@ Required attribute
 
 `String`
 
-Currency  
+Currency
 
 Read-only attribute
 
@@ -856,8 +855,8 @@ Item ID
 
 ## [Create Item](#create-item)
 
-*   If inventory item is successfully created the server will respond with `201 Created` and a JSON body with its data. A `Location` header will also be returned which contains a link to the newly created item.
-*   Request with invalid data will result in response `422 Unprocessable Content` with a JSON body describing errors found in the request.
+- If inventory item is successfully created the server will respond with `201 Created` and a JSON body with its data. A `Location` header will also be returned which contains a link to the newly created item.
+- Request with invalid data will result in response `422 Unprocessable Content` with a JSON body describing errors found in the request.
 
 `POST` `/accounts/{slug}/inventory_items.json`
 
@@ -988,8 +987,8 @@ Value
 
 ## [Update Item](#update-item)
 
-*   If item is successfully updated the server will respond with `200 OK` and a JSON body with its data.
-*   Request with invalid data will result in response `422 Unprocessable Content` with a JSON body describing errors found in the request.
+- If item is successfully updated the server will respond with `200 OK` and a JSON body with its data.
+- Request with invalid data will result in response `422 Unprocessable Content` with a JSON body describing errors found in the request.
 
 `PATCH` `/accounts/{slug}/inventory_items/{id}.json`
 
@@ -1106,8 +1105,8 @@ Inventory item ID
 
 ## [Delete Item](#delete-item)
 
-*   After deleting an item the server will respond with `204 No Content`.
-*   If item cannot be deleted (contains inventory moves) server will respond with `403 Forbidden`.
+- After deleting an item the server will respond with `204 No Content`.
+- If item cannot be deleted (contains inventory moves) server will respond with `403 Forbidden`.
 
 `DELETE` `/accounts/{slug}/inventory_items/{id}.json`
 
@@ -1173,8 +1172,8 @@ Inventory item ID
 
 ## [Archive Item](#archive-item)
 
-*   After archiving an item the server will respond with `200 OK` and a JSON body with its data.
-*   If item cannot be archived (does not contain inventory moves) server will respond with `403 Forbidden`.
+- After archiving an item the server will respond with `200 OK` and a JSON body with its data.
+- If item cannot be archived (does not contain inventory moves) server will respond with `403 Forbidden`.
 
 `POST` `/accounts/{slug}/inventory_items/{id}/archive.json`
 
@@ -1346,7 +1345,7 @@ Inventory item ID
 }
 ```
 
-* * *
+---
 
 1.  [API v3](/api/v3)→
 2.  [Inventory Items](/api/v3/inventory-items)

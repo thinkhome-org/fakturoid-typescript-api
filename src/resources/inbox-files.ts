@@ -12,7 +12,13 @@ export interface InboxFile {
   bytesize: number;
   send_to_ocr: boolean;
   sent_to_ocr_at: DateString | null;
-  ocr_status: 'created' | 'processing' | 'processing_failed' | 'processing_rejected' | 'processed' | null;
+  ocr_status:
+    | 'created'
+    | 'processing'
+    | 'processing_failed'
+    | 'processing_rejected'
+    | 'processed'
+    | null;
   ocr_completed_at: DateString | null;
   download_url: string;
   created_at: DateString;
@@ -51,9 +57,7 @@ export class InboxFilesResource {
   public async list(options: PaginationOptions = {}): Promise<InboxFile[]> {
     const { accessToken, slug } = await this.getAuth();
     const query =
-      options.page != null
-        ? new URLSearchParams({ page: String(options.page) })
-        : undefined;
+      options.page != null ? new URLSearchParams({ page: String(options.page) }) : undefined;
     return this.http.request<InboxFile[]>({
       method: 'GET',
       path: `/api/v3/accounts/${slug}/inbox_files.json`,

@@ -156,10 +156,7 @@ export class RecurringGeneratorsResource {
     });
   }
 
-  public async update(
-    id: number,
-    data: UpdateRecurringGenerator
-  ): Promise<RecurringGenerator> {
+  public async update(id: number, data: UpdateRecurringGenerator): Promise<RecurringGenerator> {
     const { accessToken, slug } = await this.getAuth();
     return this.http.request<RecurringGenerator>({
       method: 'PATCH',
@@ -198,7 +195,7 @@ export class RecurringGeneratorsResource {
    */
   public async activate(
     id: number,
-    data: ActivateRecurringGeneratorPayload = {},
+    data: ActivateRecurringGeneratorPayload = {}
   ): Promise<RecurringGenerator> {
     const { accessToken, slug } = await this.getAuth();
     const body = Object.keys(data).length > 0 ? data : undefined;
@@ -214,7 +211,9 @@ export class RecurringGeneratorsResource {
    * Async generator that iterates through all pages of recurring generators.
    * Yields individual recurring generators. Use with `for await...of`.
    */
-  public listAll(options: Omit<ListRecurringGeneratorsOptions, 'page'> = {}): AsyncGenerator<RecurringGenerator, void, undefined> {
+  public listAll(
+    options: Omit<ListRecurringGeneratorsOptions, 'page'> = {}
+  ): AsyncGenerator<RecurringGenerator, void, undefined> {
     return paginateAll((page) => this.list({ ...options, page }));
   }
 }

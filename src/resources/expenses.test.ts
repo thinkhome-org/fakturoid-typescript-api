@@ -6,7 +6,7 @@ import { ExpensesResource } from './expenses';
 describe('ExpensesResource', () => {
   test('list builds path with slug and optional query params', async () => {
     const getAuth = mock(
-      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 'tok', slug: 'acme' }),
+      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 'tok', slug: 'acme' })
     );
     const requestMock = mock(
       (opts: { method: string; path: string; accessToken: string; query?: URLSearchParams }) => {
@@ -18,7 +18,7 @@ describe('ExpensesResource', () => {
         expect(opts.query?.has('until')).toBe(false);
         expect(opts.query?.has('document_type')).toBe(false);
         return Promise.resolve([]);
-      },
+      }
     );
 
     const http = { request: requestMock } as unknown as HttpClient;
@@ -30,7 +30,7 @@ describe('ExpensesResource', () => {
 
   test('search builds search path with query and tags', async () => {
     const getAuth = mock(
-      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' }),
+      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' })
     );
     const requestMock = mock((opts: { path: string; query?: URLSearchParams }) => {
       expect(opts.path).toBe('/api/v3/accounts/s/expenses/search.json');
@@ -48,7 +48,7 @@ describe('ExpensesResource', () => {
 
   test('fireEvent builds POST path with event query (lock)', async () => {
     const getAuth = mock(
-      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' }),
+      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' })
     );
     const requestMock = mock((opts: { method: string; path: string; query?: URLSearchParams }) => {
       expect(opts.method).toBe('POST');
@@ -66,7 +66,7 @@ describe('ExpensesResource', () => {
 
   test('fireEvent supports unlock', async () => {
     const getAuth = mock(
-      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' }),
+      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' })
     );
     const requestMock = mock((opts: { query?: URLSearchParams }) => {
       expect(opts.query?.get('event')).toBe('unlock');
@@ -82,12 +82,10 @@ describe('ExpensesResource', () => {
 
   test('downloadAttachment builds correct path', async () => {
     const getAuth = mock(
-      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' }),
+      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' })
     );
     const requestRawMock = mock((opts: { path: string }) => {
-      expect(opts.path).toBe(
-        '/api/v3/accounts/s/expenses/10/attachments/20/download',
-      );
+      expect(opts.path).toBe('/api/v3/accounts/s/expenses/10/attachments/20/download');
       return Promise.resolve({
         status: 200,
         arrayBuffer: () => Promise.resolve(new ArrayBuffer(0)),

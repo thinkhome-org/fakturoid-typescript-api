@@ -68,8 +68,7 @@ export class FakturoidClient {
 
   public constructor(params: CreateFakturoidClientParams) {
     this.tokenStore = params.tokenStore;
-    this.maxCacheSize =
-      params.config.maxCacheSize ?? DEFAULT_MAX_CACHE_SIZE;
+    this.maxCacheSize = params.config.maxCacheSize ?? DEFAULT_MAX_CACHE_SIZE;
     this.http = new HttpClient({
       baseUrl: params.config.baseUrl ?? 'https://app.fakturoid.cz',
       userAgent: params.config.userAgent,
@@ -113,7 +112,7 @@ export class FakturoidClient {
    */
   public async connectWithClientCredentials(
     tenantId: string,
-    slug?: string,
+    slug?: string
   ): Promise<TenantResources> {
     await this.oauth.obtainClientCredentialsToken(tenantId, slug);
     return this.forTenant(tenantId);

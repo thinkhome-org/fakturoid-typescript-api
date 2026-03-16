@@ -35,9 +35,10 @@ const USER_PATH = '/api/v3/user.json';
  */
 function buildBasicAuthHeader(clientId: string, clientSecret: string): string {
   const credentials = `${clientId}:${clientSecret}`;
-  const encoded = typeof Buffer !== 'undefined'
-    ? Buffer.from(credentials, 'utf8').toString('base64')
-    : btoa(credentials);
+  const encoded =
+    typeof Buffer !== 'undefined'
+      ? Buffer.from(credentials, 'utf8').toString('base64')
+      : btoa(credentials);
   const urlSafeEncoded = encoded.replaceAll('+', '-').replaceAll('/', '_');
   return `Basic ${urlSafeEncoded}`;
 }
@@ -157,7 +158,7 @@ export class OAuthService {
    */
   public async obtainClientCredentialsToken(
     tenantId: string,
-    slug?: string,
+    slug?: string
   ): Promise<FakturoidTokens> {
     const baseUrl = this.resolveBaseUrl();
     const url = new URL(TOKEN_PATH, baseUrl);

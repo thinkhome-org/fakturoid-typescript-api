@@ -389,7 +389,7 @@ export class InvoicesResource {
    */
   public async downloadAttachment(
     invoiceId: number,
-    attachmentId: number,
+    attachmentId: number
   ): Promise<ArrayBuffer | null> {
     const { accessToken, slug } = await this.getAuth();
     const response = await this.http.requestRaw({
@@ -405,7 +405,9 @@ export class InvoicesResource {
    * Async generator that iterates through all pages of invoices.
    * Yields individual invoices. Use with `for await...of`.
    */
-  public listAll(options: Omit<ListInvoicesOptions, 'page'> = {}): AsyncGenerator<Invoice, void, undefined> {
+  public listAll(
+    options: Omit<ListInvoicesOptions, 'page'> = {}
+  ): AsyncGenerator<Invoice, void, undefined> {
     return paginateAll((page) => this.list({ ...options, page }));
   }
 }

@@ -11,7 +11,13 @@ export type {
   InvoiceHideBankAccountPaymentMethod,
 } from './resources/account';
 export type { BankAccount } from './resources/bank-accounts';
-export type { Event, EventRelatedObject, EventRelatedObjectType, EventUser, ListEventsOptions } from './resources/events';
+export type {
+  Event,
+  EventRelatedObject,
+  EventRelatedObjectType,
+  EventUser,
+  ListEventsOptions,
+} from './resources/events';
 export type { ExpensePayment, NewExpensePayment } from './resources/expense-payments';
 export type {
   Expense,
@@ -81,7 +87,12 @@ export type {
   SubjectWebinvoiceHistory,
   UpdateSubject,
 } from './resources/subjects';
-export type { ListTodosOptions, Todo, TodoRelatedObject, TodoRelatedObjectType } from './resources/todos';
+export type {
+  ListTodosOptions,
+  Todo,
+  TodoRelatedObject,
+  TodoRelatedObjectType,
+} from './resources/todos';
 export type { CurrentUser, User, UserAccount } from './resources/users';
 export type {
   ListWebhooksOptions,

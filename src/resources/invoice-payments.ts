@@ -74,10 +74,7 @@ export class InvoicePaymentsResource {
    * Creates a tax document for the given invoice payment.
    * @see https://www.fakturoid.cz/api/v3/invoice-payments#create-tax-document
    */
-  public async createTaxDocument(
-    invoiceId: number,
-    paymentId: number,
-  ): Promise<InvoicePayment> {
+  public async createTaxDocument(invoiceId: number, paymentId: number): Promise<InvoicePayment> {
     const { accessToken, slug } = await this.getAuth();
     return this.http.request<InvoicePayment>({
       method: 'POST',

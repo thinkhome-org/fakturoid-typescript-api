@@ -6,7 +6,7 @@ import { WebhooksResource } from './webhooks';
 describe('WebhooksResource', () => {
   test('list builds path with optional page', async () => {
     const getAuth = mock(
-      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 'tok', slug: 'acme' }),
+      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 'tok', slug: 'acme' })
     );
     const requestMock = mock((opts: { path: string; query?: URLSearchParams }) => {
       expect(opts.path).toBe('/api/v3/accounts/acme/webhooks.json');
@@ -23,13 +23,13 @@ describe('WebhooksResource', () => {
 
   test('getFailedDeliveries builds GET path with failed_deliveries_uuid', async () => {
     const getAuth = mock(
-      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' }),
+      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' })
     );
     const failedDeliveriesUuid = 'b3518e74-5c9f-4b26-a5e2-6a8021c94a77';
     const requestMock = mock((opts: { method: string; path: string }) => {
       expect(opts.method).toBe('GET');
       expect(opts.path).toBe(
-        `/api/v3/accounts/s/webhooks/${failedDeliveriesUuid}/failed_deliveries.json`,
+        `/api/v3/accounts/s/webhooks/${failedDeliveriesUuid}/failed_deliveries.json`
       );
       return Promise.resolve([]);
     });

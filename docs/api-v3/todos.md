@@ -2,34 +2,34 @@ ZavÅÃ­t menu
 
 [Fakturoid web â](/)
 
-*   [Introduction](/api/v3)
-*   [Changelog](/api/v3/changelog)
-*   [Authorization](/api/v3/authorization)
-*   [Users](/api/v3/users)
-*   [Account](/api/v3/account)
-*   [Bank Accounts](/api/v3/bank-accounts)
-*   [Number Formats](/api/v3/number-formats)
-*   [Subjects](/api/v3/subjects)
-*   [Invoices](/api/v3/invoices)
-*   [Invoice Payments](/api/v3/invoice-payments)
-*   [Invoice Messages](/api/v3/invoice-messages)
-*   [Expenses](/api/v3/expenses)
-*   [Expense Payments](/api/v3/expense-payments)
-*   [Inbox Files](/api/v3/inbox-files)
-*   [Inventory Items](/api/v3/inventory-items)
-*   [Inventory Moves](/api/v3/inventory-moves)
-*   [Generators](/api/v3/generators)
-*   [Recurring Generators](/api/v3/recurring-generators)
-*   [Events](/api/v3/events)
-*   [Todos](/api/v3/todos)
-    *   [Attributes](#attributes)
-    *   [Todos Index](#todos-index)
-    *   [Todo Toggle Completion](#todo-toggle-completion)
-*   [Webhooks](/api/v3/webhooks)
+- [Introduction](/api/v3)
+- [Changelog](/api/v3/changelog)
+- [Authorization](/api/v3/authorization)
+- [Users](/api/v3/users)
+- [Account](/api/v3/account)
+- [Bank Accounts](/api/v3/bank-accounts)
+- [Number Formats](/api/v3/number-formats)
+- [Subjects](/api/v3/subjects)
+- [Invoices](/api/v3/invoices)
+- [Invoice Payments](/api/v3/invoice-payments)
+- [Invoice Messages](/api/v3/invoice-messages)
+- [Expenses](/api/v3/expenses)
+- [Expense Payments](/api/v3/expense-payments)
+- [Inbox Files](/api/v3/inbox-files)
+- [Inventory Items](/api/v3/inventory-items)
+- [Inventory Moves](/api/v3/inventory-moves)
+- [Generators](/api/v3/generators)
+- [Recurring Generators](/api/v3/recurring-generators)
+- [Events](/api/v3/events)
+- [Todos](/api/v3/todos)
+  - [Attributes](#attributes)
+  - [Todos Index](#todos-index)
+  - [Todo Toggle Completion](#todo-toggle-completion)
+- [Webhooks](/api/v3/webhooks)
 
 # Todos
 
-* * *
+---
 
 ## [Attributes](#attributes)
 
@@ -120,20 +120,19 @@ Read-only attribute
 
 ID of the object related toÂ todo
 
-*   Required attribute
-    
-    Required attribute (must always be present).
-    
-*   Read-only attribute
-    
-    Read-only attribute (cannot be changed).
-    
-*   Write-only attribute
-    
-    Write-only attribute (will not be returned).
-    
-*   Unmarked attributes are optional and can be omitted during request.
-    
+- Required attribute
+
+  Required attribute (must always be present).
+
+- Read-only attribute
+
+  Read-only attribute (cannot be changed).
+
+- Write-only attribute
+
+  Write-only attribute (will not be returned).
+
+- Unmarked attributes are optional and can be omitted during request.
 
 ## [Todos Index](#todos-index)
 
@@ -343,7 +342,7 @@ Todo ID
 }
 ```
 
-* * *
+---
 
 1.  [API v3](/api/v3)â
 2.  [Todos](/api/v3/todos)

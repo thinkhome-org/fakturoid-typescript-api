@@ -6,12 +6,12 @@ import { InvoicePaymentsResource } from './invoice-payments';
 describe('InvoicePaymentsResource', () => {
   test('createTaxDocument builds POST path', async () => {
     const getAuth = mock(
-      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' }),
+      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' })
     );
     const requestMock = mock((opts: { method: string; path: string }) => {
       expect(opts.method).toBe('POST');
       expect(opts.path).toBe(
-        '/api/v3/accounts/s/invoices/100/payments/200/create_tax_document.json',
+        '/api/v3/accounts/s/invoices/100/payments/200/create_tax_document.json'
       );
       return Promise.resolve({
         id: 200,

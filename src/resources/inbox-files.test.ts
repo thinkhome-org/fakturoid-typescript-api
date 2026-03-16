@@ -6,7 +6,7 @@ import { InboxFilesResource } from './inbox-files';
 describe('InboxFilesResource', () => {
   test('list builds path with optional page', async () => {
     const getAuth = mock(
-      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' }),
+      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' })
     );
     const requestMock = mock((opts: { path: string; query?: URLSearchParams }) => {
       expect(opts.path).toBe('/api/v3/accounts/s/inbox_files.json');
@@ -23,7 +23,7 @@ describe('InboxFilesResource', () => {
 
   test('create builds POST path and sends attachment', async () => {
     const getAuth = mock(
-      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' }),
+      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' })
     );
     const requestMock = mock((opts: { method: string; path: string; body?: unknown }) => {
       expect(opts.method).toBe('POST');
@@ -42,7 +42,7 @@ describe('InboxFilesResource', () => {
 
   test('download uses requestRaw', async () => {
     const getAuth = mock(
-      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' }),
+      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' })
     );
     const buf = new ArrayBuffer(8);
     const requestRawMock = mock((opts: { path: string }) => {
@@ -63,7 +63,7 @@ describe('InboxFilesResource', () => {
 
   test('sendToOcr builds POST path', async () => {
     const getAuth = mock(
-      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' }),
+      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' })
     );
     const requestMock = mock((opts: { method: string; path: string }) => {
       expect(opts.method).toBe('POST');
@@ -80,7 +80,7 @@ describe('InboxFilesResource', () => {
 
   test('delete builds DELETE path', async () => {
     const getAuth = mock(
-      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' }),
+      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' })
     );
     const requestMock = mock((opts: { method: string; path: string }) => {
       expect(opts.method).toBe('DELETE');

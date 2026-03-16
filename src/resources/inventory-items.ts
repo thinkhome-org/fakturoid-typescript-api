@@ -230,7 +230,9 @@ export class InventoryItemsResource {
    * Async generator that iterates through all pages of inventory items.
    * Yields individual inventory items. Use with `for await...of`.
    */
-  public listAll(options: Omit<ListInventoryItemsOptions, 'page'> = {}): AsyncGenerator<InventoryItem, void, undefined> {
+  public listAll(
+    options: Omit<ListInventoryItemsOptions, 'page'> = {}
+  ): AsyncGenerator<InventoryItem, void, undefined> {
     return paginateAll((page) => this.list({ ...options, page }));
   }
 
@@ -238,7 +240,9 @@ export class InventoryItemsResource {
    * Async generator that iterates through all pages of archived inventory items.
    * Yields individual inventory items. Use with `for await...of`.
    */
-  public listAllArchived(options: Omit<ListInventoryItemsOptions, 'page'> = {}): AsyncGenerator<InventoryItem, void, undefined> {
+  public listAllArchived(
+    options: Omit<ListInventoryItemsOptions, 'page'> = {}
+  ): AsyncGenerator<InventoryItem, void, undefined> {
     return paginateAll((page) => this.listArchived({ ...options, page }));
   }
 }

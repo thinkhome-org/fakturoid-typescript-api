@@ -161,7 +161,9 @@ export class GeneratorsResource {
    * Async generator that iterates through all pages of generators.
    * Yields individual generators. Use with `for await...of`.
    */
-  public listAll(options: Omit<ListGeneratorsOptions, 'page'> = {}): AsyncGenerator<Generator, void, undefined> {
+  public listAll(
+    options: Omit<ListGeneratorsOptions, 'page'> = {}
+  ): AsyncGenerator<Generator, void, undefined> {
     return paginateAll((page) => this.list({ ...options, page }));
   }
 }

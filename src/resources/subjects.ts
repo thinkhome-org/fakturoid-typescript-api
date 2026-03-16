@@ -209,7 +209,9 @@ export class SubjectsResource {
    * Async generator that iterates through all pages of subjects.
    * Yields individual subjects. Use with `for await...of`.
    */
-  public listAll(options: Omit<ListSubjectsOptions, 'page'> = {}): AsyncGenerator<Subject, void, undefined> {
+  public listAll(
+    options: Omit<ListSubjectsOptions, 'page'> = {}
+  ): AsyncGenerator<Subject, void, undefined> {
     return paginateAll((page) => this.list({ ...options, page }));
   }
 }

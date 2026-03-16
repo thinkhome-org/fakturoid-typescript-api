@@ -86,7 +86,7 @@ const FAKTUROID_PAGE_SIZE = 40;
  * @returns AsyncGenerator yielding individual items from all pages.
  */
 export async function* paginateAll<T>(
-  fetchPage: (page: number) => Promise<T[]>,
+  fetchPage: (page: number) => Promise<T[]>
 ): AsyncGenerator<T, void, undefined> {
   let page = 1;
   let hasMore = true;
@@ -154,13 +154,7 @@ export type FakturoidVatPriceMode =
   | 'numerical_with_vat'
   | 'from_total_with_vat';
 
-export type FakturoidPaymentMethod =
-  | 'bank'
-  | 'cash'
-  | 'cod'
-  | 'card'
-  | 'paypal'
-  | 'custom';
+export type FakturoidPaymentMethod = 'bank' | 'cash' | 'cod' | 'card' | 'paypal' | 'custom';
 
 export type FakturoidIbanVisibility = 'automatically' | 'always';
 

@@ -2,37 +2,37 @@ Zavřít menu
 
 [Fakturoid web →](/)
 
-*   [Introduction](/api/v3)
-*   [Changelog](/api/v3/changelog)
-*   [Authorization](/api/v3/authorization)
-*   [Users](/api/v3/users)
-*   [Account](/api/v3/account)
-*   [Bank Accounts](/api/v3/bank-accounts)
-*   [Number Formats](/api/v3/number-formats)
-*   [Subjects](/api/v3/subjects)
-*   [Invoices](/api/v3/invoices)
-*   [Invoice Payments](/api/v3/invoice-payments)
-*   [Invoice Messages](/api/v3/invoice-messages)
-*   [Expenses](/api/v3/expenses)
-*   [Expense Payments](/api/v3/expense-payments)
-*   [Inbox Files](/api/v3/inbox-files)
-*   [Inventory Items](/api/v3/inventory-items)
-*   [Inventory Moves](/api/v3/inventory-moves)
-    *   [Attributes](#attributes)
-    *   [Inventory Moves Index](#inventory-moves-index)
-    *   [Inventory Move Detail](#inventory-move-detail)
-    *   [Create Inventory Move](#create-inventory-move)
-    *   [Update Inventory Move](#update-inventory-move)
-    *   [Delete Inventory Move](#delete-inventory-move)
-*   [Generators](/api/v3/generators)
-*   [Recurring Generators](/api/v3/recurring-generators)
-*   [Events](/api/v3/events)
-*   [Todos](/api/v3/todos)
-*   [Webhooks](/api/v3/webhooks)
+- [Introduction](/api/v3)
+- [Changelog](/api/v3/changelog)
+- [Authorization](/api/v3/authorization)
+- [Users](/api/v3/users)
+- [Account](/api/v3/account)
+- [Bank Accounts](/api/v3/bank-accounts)
+- [Number Formats](/api/v3/number-formats)
+- [Subjects](/api/v3/subjects)
+- [Invoices](/api/v3/invoices)
+- [Invoice Payments](/api/v3/invoice-payments)
+- [Invoice Messages](/api/v3/invoice-messages)
+- [Expenses](/api/v3/expenses)
+- [Expense Payments](/api/v3/expense-payments)
+- [Inbox Files](/api/v3/inbox-files)
+- [Inventory Items](/api/v3/inventory-items)
+- [Inventory Moves](/api/v3/inventory-moves)
+  - [Attributes](#attributes)
+  - [Inventory Moves Index](#inventory-moves-index)
+  - [Inventory Move Detail](#inventory-move-detail)
+  - [Create Inventory Move](#create-inventory-move)
+  - [Update Inventory Move](#update-inventory-move)
+  - [Delete Inventory Move](#delete-inventory-move)
+- [Generators](/api/v3/generators)
+- [Recurring Generators](/api/v3/recurring-generators)
+- [Events](/api/v3/events)
+- [Todos](/api/v3/todos)
+- [Webhooks](/api/v3/webhooks)
 
 # Inventory Moves
 
-* * *
+---
 
 ## [Attributes](#attributes)
 
@@ -190,20 +190,19 @@ Read-only attribute
 
 Document line ID
 
-*   Required attribute
-    
-    Required attribute (must always be present).
-    
-*   Read-only attribute
-    
-    Read-only attribute (cannot be changed).
-    
-*   Write-only attribute
-    
-    Write-only attribute (will not be returned).
-    
-*   Unmarked attributes are optional and can be omitted during request.
-    
+- Required attribute
+
+  Required attribute (must always be present).
+
+- Read-only attribute
+
+  Read-only attribute (cannot be changed).
+
+- Write-only attribute
+
+  Write-only attribute (will not be returned).
+
+- Unmarked attributes are optional and can be omitted during request.
 
 ## [Inventory Moves Index](#inventory-moves-index)
 
@@ -435,8 +434,8 @@ Move ID
 
 ## [Create Inventory Move](#create-inventory-move)
 
-*   If inventory move is successfully created the server will respond with `201 Created` and a JSON body with its data. A `Location` header will also be returned which contains a link to the newly created move.
-*   Request with invalid data will result in response `422 Unprocessable Content` with a JSON body describing errors found in the request.
+- If inventory move is successfully created the server will respond with `201 Created` and a JSON body with its data. A `Location` header will also be returned which contains a link to the newly created move.
+- Request with invalid data will result in response `422 Unprocessable Content` with a JSON body describing errors found in the request.
 
 `POST` `/accounts/{slug}/inventory_items/{inventory_item_id}/inventory_moves.json`
 
@@ -561,9 +560,9 @@ Value
 
 ## [Update Inventory Move](#update-inventory-move)
 
-*   If the inventory move is successfully updated the server will respond with `200 OK` and a JSON body with its data.
-*   Request with invalid data will result in response `422 Unprocessable Content` with a JSON body describing errors found in the request.
-*   When editing a move that is assigned to a document, you will receive `403 Forbidden` from the server.
+- If the inventory move is successfully updated the server will respond with `200 OK` and a JSON body with its data.
+- Request with invalid data will result in response `422 Unprocessable Content` with a JSON body describing errors found in the request.
+- When editing a move that is assigned to a document, you will receive `403 Forbidden` from the server.
 
 `PATCH` `/accounts/{slug}/inventory_items/{inventory_item_id}/inventory_moves/{id}.json`
 
@@ -743,7 +742,7 @@ Inventory move ID
 
 `Status` `204 No Content`
 
-* * *
+---
 
 1.  [API v3](/api/v3)→
 2.  [Inventory Moves](/api/v3/inventory-moves)

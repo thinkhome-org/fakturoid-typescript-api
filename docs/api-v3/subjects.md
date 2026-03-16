@@ -2,38 +2,38 @@ ZavÅÃ­t menu
 
 [Fakturoid web â](/)
 
-*   [Introduction](/api/v3)
-*   [Changelog](/api/v3/changelog)
-*   [Authorization](/api/v3/authorization)
-*   [Users](/api/v3/users)
-*   [Account](/api/v3/account)
-*   [Bank Accounts](/api/v3/bank-accounts)
-*   [Number Formats](/api/v3/number-formats)
-*   [Subjects](/api/v3/subjects)
-    *   [Attributes](#attributes)
-    *   [Subjects Index](#subjects-index)
-    *   [Subjects Search](#subjects-search)
-    *   [Subject Detail](#subject-detail)
-    *   [Create Subject](#create-subject)
-    *   [Update Subject](#update-subject)
-    *   [Delete Subject](#delete-subject)
-*   [Invoices](/api/v3/invoices)
-*   [Invoice Payments](/api/v3/invoice-payments)
-*   [Invoice Messages](/api/v3/invoice-messages)
-*   [Expenses](/api/v3/expenses)
-*   [Expense Payments](/api/v3/expense-payments)
-*   [Inbox Files](/api/v3/inbox-files)
-*   [Inventory Items](/api/v3/inventory-items)
-*   [Inventory Moves](/api/v3/inventory-moves)
-*   [Generators](/api/v3/generators)
-*   [Recurring Generators](/api/v3/recurring-generators)
-*   [Events](/api/v3/events)
-*   [Todos](/api/v3/todos)
-*   [Webhooks](/api/v3/webhooks)
+- [Introduction](/api/v3)
+- [Changelog](/api/v3/changelog)
+- [Authorization](/api/v3/authorization)
+- [Users](/api/v3/users)
+- [Account](/api/v3/account)
+- [Bank Accounts](/api/v3/bank-accounts)
+- [Number Formats](/api/v3/number-formats)
+- [Subjects](/api/v3/subjects)
+  - [Attributes](#attributes)
+  - [Subjects Index](#subjects-index)
+  - [Subjects Search](#subjects-search)
+  - [Subject Detail](#subject-detail)
+  - [Create Subject](#create-subject)
+  - [Update Subject](#update-subject)
+  - [Delete Subject](#delete-subject)
+- [Invoices](/api/v3/invoices)
+- [Invoice Payments](/api/v3/invoice-payments)
+- [Invoice Messages](/api/v3/invoice-messages)
+- [Expenses](/api/v3/expenses)
+- [Expense Payments](/api/v3/expense-payments)
+- [Inbox Files](/api/v3/inbox-files)
+- [Inventory Items](/api/v3/inventory-items)
+- [Inventory Moves](/api/v3/inventory-moves)
+- [Generators](/api/v3/generators)
+- [Recurring Generators](/api/v3/recurring-generators)
+- [Events](/api/v3/events)
+- [Todos](/api/v3/todos)
+- [Webhooks](/api/v3/webhooks)
 
 # Subjects
 
-* * *
+---
 
 ## [Attributes](#attributes)
 
@@ -393,20 +393,19 @@ Read-only attribute
 
 Date and time of last subject update
 
-*   Required attribute
-    
-    Required attribute (must always be present).
-    
-*   Read-only attribute
-    
-    Read-only attribute (cannot be changed).
-    
-*   Write-only attribute
-    
-    Write-only attribute (will not be returned).
-    
-*   Unmarked attributes are optional and can be omitted during request.
-    
+- Required attribute
+
+  Required attribute (must always be present).
+
+- Read-only attribute
+
+  Read-only attribute (cannot be changed).
+
+- Write-only attribute
+
+  Write-only attribute (will not be returned).
+
+- Unmarked attributes are optional and can be omitted during request.
 
 ## [Subjects Index](#subjects-index)
 
@@ -700,10 +699,10 @@ Subject ID
 
 ## [Create Subject](#create-subject)
 
-*   The only required attribute is the `name` of the subject. If country is not specified, it is copied from the account settings.
-*   If subject is successfully created the server will respond with `201 Created` and aÂ JSON body with its data. AÂ `Location` header will also be returned which contains aÂ link toÂ the newly created subject.
-*   If subject limit should be exceeded the server will respond with `403 Forbidden`. If you are on aÂ free plan Zdarma, you will need toÂ upgrade toÂ aÂ paid plan. If you are already on aÂ paid plan, please contact our support.
-*   Request with invalid data will result in response `422 Unprocessable Content` with aÂ JSON body describing errors found in the request.
+- The only required attribute is the `name` of the subject. If country is not specified, it is copied from the account settings.
+- If subject is successfully created the server will respond with `201 Created` and aÂ JSON body with its data. AÂ `Location` header will also be returned which contains aÂ link toÂ the newly created subject.
+- If subject limit should be exceeded the server will respond with `403 Forbidden`. If you are on aÂ free plan Zdarma, you will need toÂ upgrade toÂ aÂ paid plan. If you are already on aÂ paid plan, please contact our support.
+- Request with invalid data will result in response `422 Unprocessable Content` with aÂ JSON body describing errors found in the request.
 
 `POST` `/accounts/{slug}/subjects.json`
 
@@ -818,8 +817,8 @@ Value
 
 ## [Update Subject](#update-subject)
 
-*   If subject is successfully updated the server will respond with `200 OK` and aÂ JSON body with its data.
-*   Request with invalid data will result in response `422 Unprocessable Content` with aÂ JSON body describing errors found in the request.
+- If subject is successfully updated the server will respond with `200 OK` and aÂ JSON body with its data.
+- Request with invalid data will result in response `422 Unprocessable Content` with aÂ JSON body describing errors found in the request.
 
 `PATCH` `/accounts/{slug}/subjects/{id}.json`
 
@@ -982,7 +981,7 @@ Subject ID
 }
 ```
 
-* * *
+---
 
 1.  [API v3](/api/v3)â
 2.  [Subjects](/api/v3/subjects)

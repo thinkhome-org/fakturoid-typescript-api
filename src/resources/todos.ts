@@ -81,7 +81,9 @@ export class TodosResource {
    * Async generator that iterates through all pages of todos.
    * Yields individual todos. Use with `for await...of`.
    */
-  public listAll(options: Omit<ListTodosOptions, 'page'> = {}): AsyncGenerator<Todo, void, undefined> {
+  public listAll(
+    options: Omit<ListTodosOptions, 'page'> = {}
+  ): AsyncGenerator<Todo, void, undefined> {
     return paginateAll((page) => this.list({ ...options, page }));
   }
 }

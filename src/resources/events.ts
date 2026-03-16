@@ -85,7 +85,9 @@ export class EventsResource {
    * Async generator that iterates through all pages of events.
    * Yields individual events. Use with `for await...of`.
    */
-  public listAll(options: Omit<ListEventsOptions, 'page'> = {}): AsyncGenerator<Event, void, undefined> {
+  public listAll(
+    options: Omit<ListEventsOptions, 'page'> = {}
+  ): AsyncGenerator<Event, void, undefined> {
     return paginateAll((page) => this.list({ ...options, page }));
   }
 
@@ -93,7 +95,9 @@ export class EventsResource {
    * Async generator that iterates through all pages of paid events.
    * Yields individual events. Use with `for await...of`.
    */
-  public listAllPaid(options: Omit<ListEventsOptions, 'page'> = {}): AsyncGenerator<Event, void, undefined> {
+  public listAllPaid(
+    options: Omit<ListEventsOptions, 'page'> = {}
+  ): AsyncGenerator<Event, void, undefined> {
     return paginateAll((page) => this.listPaid({ ...options, page }));
   }
 }

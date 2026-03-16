@@ -227,3 +227,10 @@ Tests in `tests/integration/` require real Fakturoid credentials. Depending on y
 - `FAKTUROID_REFRESH_TOKEN`
 
 The SDK can obtain the account slug automatically after token refresh.
+
+---
+
+<div align="center">
+  Maintained by <strong>ThinkHome s.r.o.</strong><br>
+  <a href="https://thinkhome.org">thinkhome.org</a> • IČ: 23893591 • DIČ: CZ23893591
+</div>

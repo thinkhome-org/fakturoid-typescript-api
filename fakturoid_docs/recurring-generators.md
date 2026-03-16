@@ -2,39 +2,39 @@ Zavřít menu
 
 [Fakturoid web →](/)
 
-*   [Introduction](/api/v3)
-*   [Changelog](/api/v3/changelog)
-*   [Authorization](/api/v3/authorization)
-*   [Users](/api/v3/users)
-*   [Account](/api/v3/account)
-*   [Bank Accounts](/api/v3/bank-accounts)
-*   [Number Formats](/api/v3/number-formats)
-*   [Subjects](/api/v3/subjects)
-*   [Invoices](/api/v3/invoices)
-*   [Invoice Payments](/api/v3/invoice-payments)
-*   [Invoice Messages](/api/v3/invoice-messages)
-*   [Expenses](/api/v3/expenses)
-*   [Expense Payments](/api/v3/expense-payments)
-*   [Inbox Files](/api/v3/inbox-files)
-*   [Inventory Items](/api/v3/inventory-items)
-*   [Inventory Moves](/api/v3/inventory-moves)
-*   [Generators](/api/v3/generators)
-*   [Recurring Generators](/api/v3/recurring-generators)
-    *   [Attributes](#attributes)
-    *   [Recurring Generators Index](#recurring-generators-index)
-    *   [Recurring Generator Detail](#recurring-generator-detail)
-    *   [Create Recurring Generator](#create-recurring-generator)
-    *   [Update Recurring Generator](#update-recurring-generator)
-    *   [Pause Recurring Generator](#pause-recurring-generator)
-    *   [Activate Recurring Generator](#activate-recurring-generator)
-    *   [Delete Recurring Generator](#delete-recurring-generator)
-*   [Events](/api/v3/events)
-*   [Todos](/api/v3/todos)
-*   [Webhooks](/api/v3/webhooks)
+- [Introduction](/api/v3)
+- [Changelog](/api/v3/changelog)
+- [Authorization](/api/v3/authorization)
+- [Users](/api/v3/users)
+- [Account](/api/v3/account)
+- [Bank Accounts](/api/v3/bank-accounts)
+- [Number Formats](/api/v3/number-formats)
+- [Subjects](/api/v3/subjects)
+- [Invoices](/api/v3/invoices)
+- [Invoice Payments](/api/v3/invoice-payments)
+- [Invoice Messages](/api/v3/invoice-messages)
+- [Expenses](/api/v3/expenses)
+- [Expense Payments](/api/v3/expense-payments)
+- [Inbox Files](/api/v3/inbox-files)
+- [Inventory Items](/api/v3/inventory-items)
+- [Inventory Moves](/api/v3/inventory-moves)
+- [Generators](/api/v3/generators)
+- [Recurring Generators](/api/v3/recurring-generators)
+  - [Attributes](#attributes)
+  - [Recurring Generators Index](#recurring-generators-index)
+  - [Recurring Generator Detail](#recurring-generator-detail)
+  - [Create Recurring Generator](#create-recurring-generator)
+  - [Update Recurring Generator](#update-recurring-generator)
+  - [Pause Recurring Generator](#pause-recurring-generator)
+  - [Activate Recurring Generator](#activate-recurring-generator)
+  - [Delete Recurring Generator](#delete-recurring-generator)
+- [Events](/api/v3/events)
+- [Todos](/api/v3/todos)
+- [Webhooks](/api/v3/webhooks)
 
 # Recurring Generators
 
-* * *
+---
 
 ## [Attributes](#attributes)
 
@@ -383,8 +383,8 @@ Date and time of last generator update
 
 `vat_price_mode` settings is ignored in following cases:
 
-*   Account is set as non VAT payer.
-*   Reverse charge (`transferred_tax_liability`) is used.
+- Account is set as non VAT payer.
+- Reverse charge (`transferred_tax_liability`) is used.
 
 Attribute
 
@@ -611,8 +611,8 @@ The `unit_price_without_vat` and `unit_price_with_vat` attributes are read-only 
 
 The `unit_price_without_vat` and `unit_price_with_vat` attributes have the same value in the following cases:
 
-*   The VAT rate is set to 0.
-*   Reverse charge is enabled (if reverse charge is enabled on the document, `the vat_price_mode` setting is ignored).
+- The VAT rate is set to 0.
+- Reverse charge is enabled (if reverse charge is enabled on the document, `the vat_price_mode` setting is ignored).
 
 You can use [variables](https://www.fakturoid.cz/podpora/faktury/promenne-v-sablonach-faktur) in recurring generators for inserting dates to your text.
 
@@ -741,20 +741,19 @@ Read-only attribute
 
 BIC (for SWIFT payments)
 
-*   Required attribute
-    
-    Required attribute (must always be present).
-    
-*   Read-only attribute
-    
-    Read-only attribute (cannot be changed).
-    
-*   Write-only attribute
-    
-    Write-only attribute (will not be returned).
-    
-*   Unmarked attributes are optional and can be omitted during request.
-    
+- Required attribute
+
+  Required attribute (must always be present).
+
+- Read-only attribute
+
+  Read-only attribute (cannot be changed).
+
+- Write-only attribute
+
+  Write-only attribute (will not be returned).
+
+- Unmarked attributes are optional and can be omitted during request.
 
 ## [Recurring Generators Index](#recurring-generators-index)
 
@@ -1043,10 +1042,10 @@ Recurring generator ID
 
 ## [Create Recurring Generator](#create-recurring-generator)
 
-*   After successful generator creation, you will receive a `201 Created` response from the server, the `location` header will be set to the address of the newly created generator.
-*   If non-valid data is sent, you will receive a `422 Unprocessable Content` response from the server and a JSON with a list of errors in the sent data.
-*   In the case where no bank account is specified in Fakturoid account, the API returns a `403 Forbidden`. The body of the response will contain a description of the error with a link to the bank account settings (bank account cannot be entered via the API).
-*   Only one recurring generator is allowed on the Zdarma, Na lehko and Na každý den plans, if you try to add another, the server will return `403 Forbidden`.
+- After successful generator creation, you will receive a `201 Created` response from the server, the `location` header will be set to the address of the newly created generator.
+- If non-valid data is sent, you will receive a `422 Unprocessable Content` response from the server and a JSON with a list of errors in the sent data.
+- In the case where no bank account is specified in Fakturoid account, the API returns a `403 Forbidden`. The body of the response will contain a description of the error with a link to the bank account settings (bank account cannot be entered via the API).
+- Only one recurring generator is allowed on the Zdarma, Na lehko and Na každý den plans, if you try to add another, the server will return `403 Forbidden`.
 
 `POST` `/accounts/{slug}/recurring_generators.json`
 
@@ -1229,8 +1228,8 @@ Value
 
 ## [Update Recurring Generator](#update-recurring-generator)
 
-*   If generator is successfully updated the server will respond with `200 OK` and a JSON body with its data.
-*   Request with invalid data will result in response `422 Unprocessable Content` with a JSON body describing errors found in the request.
+- If generator is successfully updated the server will respond with `200 OK` and a JSON body with its data.
+- Request with invalid data will result in response `422 Unprocessable Content` with a JSON body describing errors found in the request.
 
 `PATCH` `/accounts/{slug}/recurring_generators/{id}.json`
 
@@ -1380,8 +1379,8 @@ Recurring generator ID
 
 ## [Pause Recurring Generator](#pause-recurring-generator)
 
-*   If generator is successfully updated the server will respond with `200 OK` and a JSON body with its data.
-*   Unsucessful request will result in response `422 Unprocessable Content` with a JSON body describing error or in response `404 Not Found` if generator is not recurring nor exists.
+- If generator is successfully updated the server will respond with `200 OK` and a JSON body with its data.
+- Unsucessful request will result in response `422 Unprocessable Content` with a JSON body describing error or in response `404 Not Found` if generator is not recurring nor exists.
 
 `PATCH` `/accounts/{slug}/recurring_generators/{id}/pause.json`
 
@@ -1477,10 +1476,10 @@ Generator ID
 
 ## [Activate Recurring Generator](#activate-recurring-generator)
 
-*   If generator is successfully activated the server will respond with `200 OK` and a JSON body with its data.
-*   Unsucessful request will result in response `422 Unprocessable Content` with a JSON body describing error or in response `404 Not Found` if generator is not recurring nor exists.
-*   It is possible to specify the date of the next generator occurrence, it must be in the future.
-*   If the generator has the `last_day_in_month` attribute set to `true`, the next occurrence will be the last day of the respective month.
+- If generator is successfully activated the server will respond with `200 OK` and a JSON body with its data.
+- Unsucessful request will result in response `422 Unprocessable Content` with a JSON body describing error or in response `404 Not Found` if generator is not recurring nor exists.
+- It is possible to specify the date of the next generator occurrence, it must be in the future.
+- If the generator has the `last_day_in_month` attribute set to `true`, the next occurrence will be the last day of the respective month.
 
 `PATCH` `/accounts/{slug}/recurring_generators/{id}/activate.json`
 
@@ -1634,7 +1633,7 @@ Recurring generator ID
 
 `Status` `204 No Content`
 
-* * *
+---
 
 1.  [API v3](/api/v3)→
 2.  [Recurring Generators](/api/v3/recurring-generators)

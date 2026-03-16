@@ -6,7 +6,7 @@ import { EventsResource } from './events';
 describe('EventsResource', () => {
   test('list builds path with optional subject_id', async () => {
     const getAuth = mock(
-      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 'tok', slug: 'acme' }),
+      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 'tok', slug: 'acme' })
     );
     const requestMock = mock((opts: { path: string; query?: URLSearchParams }) => {
       expect(opts.path).toBe('/api/v3/accounts/acme/events.json');
@@ -24,11 +24,13 @@ describe('EventsResource', () => {
 
   test('listPaid builds path to events/paid.json', async () => {
     const getAuth = mock(
-      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' }),
+      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' })
     );
     const requestMock = mock((opts: { path: string }) => {
       expect(opts.path).toBe('/api/v3/accounts/s/events/paid.json');
-      return Promise.resolve([{ name: 'invoice_paid', created_at: '2024-01-01', text: 'Invoice #1 paid' }]);
+      return Promise.resolve([
+        { name: 'invoice_paid', created_at: '2024-01-01', text: 'Invoice #1 paid' },
+      ]);
     });
 
     const http = { request: requestMock } as unknown as HttpClient;

@@ -6,7 +6,7 @@ import { RecurringGeneratorsResource } from './recurring-generators';
 describe('RecurringGeneratorsResource', () => {
   test('list builds path with optional filters', async () => {
     const getAuth = mock(
-      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 'tok', slug: 'acme' }),
+      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 'tok', slug: 'acme' })
     );
     const requestMock = mock((opts: { path: string; query?: URLSearchParams }) => {
       expect(opts.path).toBe('/api/v3/accounts/acme/recurring_generators.json');
@@ -31,12 +31,18 @@ describe('RecurringGeneratorsResource', () => {
 
   test('pause builds PATCH path to pause.json and returns generator', async () => {
     const getAuth = mock(
-      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' }),
+      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' })
     );
     const requestMock = mock((opts: { method: string; path: string }) => {
       expect(opts.method).toBe('PATCH');
       expect(opts.path).toBe('/api/v3/accounts/s/recurring_generators/42/pause.json');
-      return Promise.resolve({ id: 42, active: false, next_occurrence_on: null, name: 'RG', total: '0' });
+      return Promise.resolve({
+        id: 42,
+        active: false,
+        next_occurrence_on: null,
+        name: 'RG',
+        total: '0',
+      });
     });
 
     const http = { request: requestMock } as unknown as HttpClient;
@@ -49,7 +55,7 @@ describe('RecurringGeneratorsResource', () => {
 
   test('activate builds PATCH path to activate.json and sends body', async () => {
     const getAuth = mock(
-      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' }),
+      (): Promise<FakturoidAuth> => Promise.resolve({ accessToken: 't', slug: 's' })
     );
     const requestMock = mock((opts: { method: string; path: string; body?: unknown }) => {
       expect(opts.method).toBe('PATCH');

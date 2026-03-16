@@ -30,7 +30,7 @@ export class InvoiceMessagesResource {
 
   public async sendInvoiceByEmail(
     invoiceId: number,
-    payload: SendInvoiceEmailPayload = {},
+    payload: SendInvoiceEmailPayload = {}
   ): Promise<void> {
     const { accessToken, slug } = await this.getAuth();
     await this.http.request<undefined>({

@@ -2,37 +2,37 @@ ZavÅÃ­t menu
 
 [Fakturoid web â](/)
 
-*   [Introduction](/api/v3)
-*   [Changelog](/api/v3/changelog)
-*   [Authorization](/api/v3/authorization)
-*   [Users](/api/v3/users)
-*   [Account](/api/v3/account)
-*   [Bank Accounts](/api/v3/bank-accounts)
-*   [Number Formats](/api/v3/number-formats)
-*   [Subjects](/api/v3/subjects)
-*   [Invoices](/api/v3/invoices)
-*   [Invoice Payments](/api/v3/invoice-payments)
-*   [Invoice Messages](/api/v3/invoice-messages)
-*   [Expenses](/api/v3/expenses)
-*   [Expense Payments](/api/v3/expense-payments)
-*   [Inbox Files](/api/v3/inbox-files)
-    *   [Attributes](#attributes)
-    *   [Inbox Files Index](#inbox-files-index)
-    *   [Create Inbox File](#create-inbox-file)
-    *   [Send Inbox File to OCR](#send-inbox-file-to-ocr)
-    *   [Download Inbox File](#download-inbox-file)
-    *   [Delete Inbox File](#delete-inbox-file)
-*   [Inventory Items](/api/v3/inventory-items)
-*   [Inventory Moves](/api/v3/inventory-moves)
-*   [Generators](/api/v3/generators)
-*   [Recurring Generators](/api/v3/recurring-generators)
-*   [Events](/api/v3/events)
-*   [Todos](/api/v3/todos)
-*   [Webhooks](/api/v3/webhooks)
+- [Introduction](/api/v3)
+- [Changelog](/api/v3/changelog)
+- [Authorization](/api/v3/authorization)
+- [Users](/api/v3/users)
+- [Account](/api/v3/account)
+- [Bank Accounts](/api/v3/bank-accounts)
+- [Number Formats](/api/v3/number-formats)
+- [Subjects](/api/v3/subjects)
+- [Invoices](/api/v3/invoices)
+- [Invoice Payments](/api/v3/invoice-payments)
+- [Invoice Messages](/api/v3/invoice-messages)
+- [Expenses](/api/v3/expenses)
+- [Expense Payments](/api/v3/expense-payments)
+- [Inbox Files](/api/v3/inbox-files)
+  - [Attributes](#attributes)
+  - [Inbox Files Index](#inbox-files-index)
+  - [Create Inbox File](#create-inbox-file)
+  - [Send Inbox File to OCR](#send-inbox-file-to-ocr)
+  - [Download Inbox File](#download-inbox-file)
+  - [Delete Inbox File](#delete-inbox-file)
+- [Inventory Items](/api/v3/inventory-items)
+- [Inventory Moves](/api/v3/inventory-moves)
+- [Generators](/api/v3/generators)
+- [Recurring Generators](/api/v3/recurring-generators)
+- [Events](/api/v3/events)
+- [Todos](/api/v3/todos)
+- [Webhooks](/api/v3/webhooks)
 
 # Inbox Files
 
-* * *
+---
 
 ## [Attributes](#attributes)
 
@@ -120,20 +120,19 @@ Read-only attribute
 
 The date and time of last file update
 
-*   Required attribute
-    
-    Required attribute (must always be present).
-    
-*   Read-only attribute
-    
-    Read-only attribute (cannot be changed).
-    
-*   Write-only attribute
-    
-    Write-only attribute (will not be returned).
-    
-*   Unmarked attributes are optional and can be omitted during request.
-    
+- Required attribute
+
+  Required attribute (must always be present).
+
+- Read-only attribute
+
+  Read-only attribute (cannot be changed).
+
+- Write-only attribute
+
+  Write-only attribute (will not be returned).
+
+- Unmarked attributes are optional and can be omitted during request.
 
 ### [OCR Status Table](#ocr-status-table)
 
@@ -241,10 +240,10 @@ Page number (40 records per page)
 
 ## [Create Inbox File](#create-inbox-file)
 
-*   The file is sent in the `attachment` attribute as aÂ Base64 encoded string.
-*   The file name can be passed in the `filename` attribute. If not passed, aÂ file name of the form `attachment.*` is used with an extension according toÂ the MIME type specified in the `attachment` attribute.
-*   After the file is successfully created, you will receive aÂ `201 Created` and JSON response from the server with basic information about the file.
-*   If invalid data is sent, you will receive aÂ `422 Unprocessable Content` and JSON response from the server listing the errors in the data sent.
+- The file is sent in the `attachment` attribute as aÂ Base64 encoded string.
+- The file name can be passed in the `filename` attribute. If not passed, aÂ file name of the form `attachment.*` is used with an extension according toÂ the MIME type specified in the `attachment` attribute.
+- After the file is successfully created, you will receive aÂ `201 Created` and JSON response from the server with basic information about the file.
+- If invalid data is sent, you will receive aÂ `422 Unprocessable Content` and JSON response from the server listing the errors in the data sent.
 
 `POST` `/accounts/{slug}/inbox_files.json`
 
@@ -541,7 +540,7 @@ Inbox File ID
 }
 ```
 
-* * *
+---
 
 1.  [API v3](/api/v3)â
 2.  [Inbox Files](/api/v3/inbox-files)

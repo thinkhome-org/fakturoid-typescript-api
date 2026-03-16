@@ -20,16 +20,14 @@ const INTEGRATION_TENANT_ID = 'integration-test-tenant';
 
 const CLIENT_ID = process.env.FAKTUROID_CLIENT_ID;
 const CLIENT_SECRET = process.env.FAKTUROID_CLIENT_SECRET;
-const SLUG = process.env.FAKTUROID_SLUG ?? 'testcompany1';
+const SLUG = process.env.FAKTUROID_SLUG;
 const REFRESH_TOKEN = process.env.FAKTUROID_REFRESH_TOKEN ?? '';
 
 const OAUTH_APP_CLIENT_ID = process.env.FAKTUROID_OAUTH_CLIENT_ID ?? CLIENT_ID ?? '';
-const OAUTH_APP_CLIENT_SECRET =
-  process.env.FAKTUROID_OAUTH_CLIENT_SECRET ?? CLIENT_SECRET ?? '';
-const REDIRECT_URI =
-  process.env.FAKTUROID_REDIRECT_URI ?? 'https://faktubot.thinkhome.org/auth/redirect';
+const OAUTH_APP_CLIENT_SECRET = process.env.FAKTUROID_OAUTH_CLIENT_SECRET ?? CLIENT_SECRET ?? '';
+const REDIRECT_URI = process.env.FAKTUROID_REDIRECT_URI ?? 'https://yourapp.com/callback';
 
-const USER_AGENT = 'FaktuBot (admin@faktubot.thinkhome.org)';
+const USER_AGENT = process.env.FAKTUROID_USER_AGENT ?? 'Fakturoid SDK Integration Tests (admin@example.com)';
 
 /** True when we can run API tests: Client Credentials OR OAuth App + Refresh Token. */
 const hasApiCredentials =
@@ -88,10 +86,7 @@ describe('Fakturoid API integration', () => {
         },
         tokenStore,
       });
-      tenant = await client.connectWithClientCredentials(
-        INTEGRATION_TENANT_ID,
-        SLUG || undefined,
-      );
+      tenant = await client.connectWithClientCredentials(INTEGRATION_TENANT_ID, SLUG || undefined);
     }
   });
 
@@ -111,7 +106,7 @@ describe('Fakturoid API integration', () => {
         expect(account.subdomain).toBe(SLUG);
       }
     },
-    { timeout: 15_000 },
+    { timeout: 15_000 }
   );
 
   test(
@@ -134,7 +129,7 @@ describe('Fakturoid API integration', () => {
         await tenant.subjects.delete(created.id);
       }
     },
-    { timeout: 15_000 },
+    { timeout: 15_000 }
   );
 
   test(
@@ -148,7 +143,7 @@ describe('Fakturoid API integration', () => {
         expect(typeof inv.number).toBe('string');
       }
     },
-    { timeout: 15_000 },
+    { timeout: 15_000 }
   );
 
   test(
@@ -160,7 +155,7 @@ describe('Fakturoid API integration', () => {
       expect(err).toBeInstanceOf(FakturoidApiError);
       expect((err as FakturoidApiError).status).toBe(404);
     },
-    { timeout: 15_000 },
+    { timeout: 15_000 }
   );
 
   test(
@@ -187,13 +182,11 @@ describe('Fakturoid API integration', () => {
         await tenant.subjects.delete(created.id);
       }
 
-      const getAfterDelete = await tenant.subjects
-        .get(created.id)
-        .catch((e: unknown) => e);
+      const getAfterDelete = await tenant.subjects.get(created.id).catch((e: unknown) => e);
       expect(getAfterDelete).toBeInstanceOf(FakturoidApiError);
       expect((getAfterDelete as FakturoidApiError).status).toBe(404);
     },
-    { timeout: 30_000 },
+    { timeout: 30_000 }
   );
 
   test(
@@ -208,7 +201,7 @@ describe('Fakturoid API integration', () => {
         expect(typeof u.full_name).toBe('string');
       }
     },
-    { timeout: 15_000 },
+    { timeout: 15_000 }
   );
 
   test(
@@ -218,7 +211,7 @@ describe('Fakturoid API integration', () => {
       const bankAccounts = await tenant.bankAccounts.list();
       expect(Array.isArray(bankAccounts)).toBe(true);
     },
-    { timeout: 15_000 },
+    { timeout: 15_000 }
   );
 
   test(
@@ -228,7 +221,7 @@ describe('Fakturoid API integration', () => {
       const events = await tenant.events.list({ page: 1 });
       expect(Array.isArray(events)).toBe(true);
     },
-    { timeout: 15_000 },
+    { timeout: 15_000 }
   );
 
   test(
@@ -238,7 +231,7 @@ describe('Fakturoid API integration', () => {
       const formats = await tenant.numberFormats.list();
       expect(Array.isArray(formats)).toBe(true);
     },
-    { timeout: 15_000 },
+    { timeout: 15_000 }
   );
 
   test(
@@ -266,7 +259,7 @@ describe('Fakturoid API integration', () => {
       expect(err).toBeInstanceOf(FakturoidApiError);
       expect((err as FakturoidApiError).status).toBe(404);
     },
-    { timeout: 30_000 },
+    { timeout: 30_000 }
   );
 
   test(
@@ -282,7 +275,7 @@ describe('Fakturoid API integration', () => {
         expect(one.id).toBe(w.id);
       }
     },
-    { timeout: 15_000 },
+    { timeout: 15_000 }
   );
 
   test(
@@ -298,7 +291,7 @@ describe('Fakturoid API integration', () => {
         expect(one.id).toBe(g.id);
       }
     },
-    { timeout: 15_000 },
+    { timeout: 15_000 }
   );
 
   test(
@@ -315,7 +308,7 @@ describe('Fakturoid API integration', () => {
         }
       }
     },
-    { timeout: 15_000 },
+    { timeout: 15_000 }
   );
 });
 

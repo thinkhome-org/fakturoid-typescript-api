@@ -2,36 +2,36 @@ ZavÅÃ­t menu
 
 [Fakturoid web â](/)
 
-*   [Introduction](/api/v3)
-*   [Changelog](/api/v3/changelog)
-*   [Authorization](/api/v3/authorization)
-*   [Users](/api/v3/users)
-*   [Account](/api/v3/account)
-*   [Bank Accounts](/api/v3/bank-accounts)
-*   [Number Formats](/api/v3/number-formats)
-*   [Subjects](/api/v3/subjects)
-*   [Invoices](/api/v3/invoices)
-*   [Invoice Payments](/api/v3/invoice-payments)
-*   [Invoice Messages](/api/v3/invoice-messages)
-*   [Expenses](/api/v3/expenses)
-*   [Expense Payments](/api/v3/expense-payments)
-*   [Inbox Files](/api/v3/inbox-files)
-*   [Inventory Items](/api/v3/inventory-items)
-*   [Inventory Moves](/api/v3/inventory-moves)
-*   [Generators](/api/v3/generators)
-*   [Recurring Generators](/api/v3/recurring-generators)
-*   [Events](/api/v3/events)
-*   [Todos](/api/v3/todos)
-*   [Webhooks](/api/v3/webhooks)
+- [Introduction](/api/v3)
+- [Changelog](/api/v3/changelog)
+- [Authorization](/api/v3/authorization)
+- [Users](/api/v3/users)
+- [Account](/api/v3/account)
+- [Bank Accounts](/api/v3/bank-accounts)
+- [Number Formats](/api/v3/number-formats)
+- [Subjects](/api/v3/subjects)
+- [Invoices](/api/v3/invoices)
+- [Invoice Payments](/api/v3/invoice-payments)
+- [Invoice Messages](/api/v3/invoice-messages)
+- [Expenses](/api/v3/expenses)
+- [Expense Payments](/api/v3/expense-payments)
+- [Inbox Files](/api/v3/inbox-files)
+- [Inventory Items](/api/v3/inventory-items)
+- [Inventory Moves](/api/v3/inventory-moves)
+- [Generators](/api/v3/generators)
+- [Recurring Generators](/api/v3/recurring-generators)
+- [Events](/api/v3/events)
+- [Todos](/api/v3/todos)
+- [Webhooks](/api/v3/webhooks)
 
 # API v3
 
-* * *
+---
 
 ## [Request formalities](#request-formalities)
 
-*   All requests must be made via **HTTPS**.
-*   All endpoint URLs begin with `https://app.fakturoid.cz/api/v3`.
+- All requests must be made via **HTTPS**.
+- All endpoint URLs begin with `https://app.fakturoid.cz/api/v3`.
 
 Most endpoints require Fakturoid account name as part of the request URL as aÂ `slug` parameter.
 
@@ -63,9 +63,9 @@ Fakturoid supports [OAuth 2 protocol](/api/v3/authorization) for authorization.
 
 ## [Pagination](#pagination)
 
-*   Pagination is used on all endpoints that return aÂ collection of records.
-*   There are 40 records per page.
-*   Next page can be requested byÂ using the `page` query parameter.
+- Pagination is used on all endpoints that return aÂ collection of records.
+- There are 40 records per page.
+- Next page can be requested byÂ using the `page` query parameter.
 
 ## [Error handling](#error-handling)
 
@@ -109,8 +109,8 @@ X-RateLimit-Policy: default;q=400;w=60
 X-RateLimit: default;r=398;t=55
 ```
 
-*   `X-RateLimit-Policy` header contains the policy name, maximum number of requests (`q` parameter) and the time window in seconds (`w` parameter).
-*   `X-RateLimit` header contains the policy name, remaining number of requests (`r` parameter) and the remaining time in seconds until the reset (`t` parameter).
+- `X-RateLimit-Policy` header contains the policy name, maximum number of requests (`q` parameter) and the time window in seconds (`w` parameter).
+- `X-RateLimit` header contains the policy name, remaining number of requests (`r` parameter) and the remaining time in seconds until the reset (`t` parameter).
 
 The current rate limit quota is always defined in the rate limit headers. If the rate limit is exceeded, the server will respond with status code `429 Too Many Requests`. Wait until the rate limit resets and then retry the request.
 
@@ -118,7 +118,7 @@ The current rate limit quota is always defined in the rate limit headers. If the
 
 If the Fakturoid account is blocked due toÂ an overdue invoice from Fakturoid, the server will respond with status code `402 Payment Required` and the response body will contain the list of unpaid invoices.
 
-* * *
+---
 
 1.  [API v3](/api/v3)â
 2.  [API v3](/api/v3)

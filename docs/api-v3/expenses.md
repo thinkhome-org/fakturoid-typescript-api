@@ -2,40 +2,40 @@ ZavÅÃ­t menu
 
 [Fakturoid web â](/)
 
-*   [Introduction](/api/v3)
-*   [Changelog](/api/v3/changelog)
-*   [Authorization](/api/v3/authorization)
-*   [Users](/api/v3/users)
-*   [Account](/api/v3/account)
-*   [Bank Accounts](/api/v3/bank-accounts)
-*   [Number Formats](/api/v3/number-formats)
-*   [Subjects](/api/v3/subjects)
-*   [Invoices](/api/v3/invoices)
-*   [Invoice Payments](/api/v3/invoice-payments)
-*   [Invoice Messages](/api/v3/invoice-messages)
-*   [Expenses](/api/v3/expenses)
-    *   [Attributes](#attributes)
-    *   [Expenses Index](#expenses-index)
-    *   [Fulltext Search](#fulltext-search)
-    *   [Expense Detail](#expense-detail)
-    *   [Download Attachment](#download-attachment)
-    *   [Expense Actions](#expense-actions)
-    *   [Create Expense](#create-expense)
-    *   [Update Expense](#update-expense)
-    *   [Delete Expense](#delete-expense)
-*   [Expense Payments](/api/v3/expense-payments)
-*   [Inbox Files](/api/v3/inbox-files)
-*   [Inventory Items](/api/v3/inventory-items)
-*   [Inventory Moves](/api/v3/inventory-moves)
-*   [Generators](/api/v3/generators)
-*   [Recurring Generators](/api/v3/recurring-generators)
-*   [Events](/api/v3/events)
-*   [Todos](/api/v3/todos)
-*   [Webhooks](/api/v3/webhooks)
+- [Introduction](/api/v3)
+- [Changelog](/api/v3/changelog)
+- [Authorization](/api/v3/authorization)
+- [Users](/api/v3/users)
+- [Account](/api/v3/account)
+- [Bank Accounts](/api/v3/bank-accounts)
+- [Number Formats](/api/v3/number-formats)
+- [Subjects](/api/v3/subjects)
+- [Invoices](/api/v3/invoices)
+- [Invoice Payments](/api/v3/invoice-payments)
+- [Invoice Messages](/api/v3/invoice-messages)
+- [Expenses](/api/v3/expenses)
+  - [Attributes](#attributes)
+  - [Expenses Index](#expenses-index)
+  - [Fulltext Search](#fulltext-search)
+  - [Expense Detail](#expense-detail)
+  - [Download Attachment](#download-attachment)
+  - [Expense Actions](#expense-actions)
+  - [Create Expense](#create-expense)
+  - [Update Expense](#update-expense)
+  - [Delete Expense](#delete-expense)
+- [Expense Payments](/api/v3/expense-payments)
+- [Inbox Files](/api/v3/inbox-files)
+- [Inventory Items](/api/v3/inventory-items)
+- [Inventory Moves](/api/v3/inventory-moves)
+- [Generators](/api/v3/generators)
+- [Recurring Generators](/api/v3/recurring-generators)
+- [Events](/api/v3/events)
+- [Todos](/api/v3/todos)
+- [Webhooks](/api/v3/webhooks)
 
 # Expenses
 
-* * *
+---
 
 ## [Attributes](#attributes)
 
@@ -267,7 +267,7 @@ Default: `bank`
 `String`
 
 Custom payment method (`payment_method` attribute must be set toÂ `custom`, otherwise the `custom_payment_method` value is ignored and set toÂ `null`)  
-Value: String up toÂ 20 characters  
+Value: String up toÂ 20 characters
 
 `currency`
 
@@ -435,20 +435,19 @@ Read-only attribute
 
 Date and time of last expense update
 
-*   Required attribute
-    
-    Required attribute (must always be present).
-    
-*   Read-only attribute
-    
-    Read-only attribute (cannot be changed).
-    
-*   Write-only attribute
-    
-    Write-only attribute (will not be returned).
-    
-*   Unmarked attributes are optional and can be omitted during request.
-    
+- Required attribute
+
+  Required attribute (must always be present).
+
+- Read-only attribute
+
+  Read-only attribute (cannot be changed).
+
+- Write-only attribute
+
+  Write-only attribute (will not be returned).
+
+- Unmarked attributes are optional and can be omitted during request.
 
 ### [Expense Status Table](#expense-status-table)
 
@@ -867,8 +866,8 @@ The `unit_price_without_vat` and `unit_price_with_vat` attributes are read-only 
 
 The `unit_price_without_vat` and `unit_price_with_vat` attributes have the same value in the following cases:
 
-*   The VAT rate is set toÂ 0.
-*   Reverse charge is enabled (if reverse charge is enabled on the document, `the vat_price_mode` setting is ignored).
+- The VAT rate is set toÂ 0.
+- Reverse charge is enabled (if reverse charge is enabled on the document, `the vat_price_mode` setting is ignored).
 
 You can use [variables](https://www.fakturoid.cz/podpora/faktury/promenne-v-sablonach-faktur) in recurring generators for inserting dates toÂ your text.
 
@@ -1511,8 +1510,8 @@ Event name
 
 ## [Create Expense](#create-expense)
 
-*   After successful expense creation, you will receive aÂ `201 Created` response from the server, the `location` header will be set toÂ the address of the newly created expense.
-*   If invalid data is sent, you will receive aÂ `422 Unprocessable Content` response from the server and aÂ JSON with aÂ list of errors in the sent data.
+- After successful expense creation, you will receive aÂ `201 Created` response from the server, the `location` header will be set toÂ the address of the newly created expense.
+- If invalid data is sent, you will receive aÂ `422 Unprocessable Content` response from the server and aÂ JSON with aÂ list of errors in the sent data.
 
 `POST` `/accounts/{slug}/expenses.json`
 
@@ -1617,9 +1616,9 @@ Account name
 
 ## [Update Expense](#update-expense)
 
-*   If expense is successfully updated the server will respond with `200 OK` and aÂ JSON body with its data.
-*   Request with invalid data will result in response `422 Unprocessable Content` with aÂ JSON body describing errors found in the request.
-*   Trying toÂ update aÂ locked expense will respond with `403 Forbidden`.
+- If expense is successfully updated the server will respond with `200 OK` and aÂ JSON body with its data.
+- Request with invalid data will result in response `422 Unprocessable Content` with aÂ JSON body describing errors found in the request.
+- Trying toÂ update aÂ locked expense will respond with `403 Forbidden`.
 
 `PATCH` `/accounts/{slug}/expenses/{id}.json`
 
@@ -1731,8 +1730,8 @@ Expense ID
 
 ## [Delete Expense](#delete-expense)
 
-*   If successfully deleted the server will respond with status `204 No Content`.
-*   If expense cannot be deleted the server will respond with status `422 Unprocessable Content`.
+- If successfully deleted the server will respond with status `204 No Content`.
+- If expense cannot be deleted the server will respond with status `422 Unprocessable Content`.
 
 `DELETE` `/accounts/{slug}/expenses/{id}.json`
 
@@ -1796,7 +1795,7 @@ Expense ID
 }
 ```
 
-* * *
+---
 
 1.  [API v3](/api/v3)â
 2.  [Expenses](/api/v3/expenses)

@@ -2,41 +2,41 @@ Zavřít menu
 
 [Fakturoid web →](/)
 
-*   [Introduction](/api/v3)
-*   [Changelog](/api/v3/changelog)
-*   [Authorization](/api/v3/authorization)
-*   [Users](/api/v3/users)
-*   [Account](/api/v3/account)
-*   [Bank Accounts](/api/v3/bank-accounts)
-*   [Number Formats](/api/v3/number-formats)
-*   [Subjects](/api/v3/subjects)
-*   [Invoices](/api/v3/invoices)
-    *   [Attributes](#attributes)
-    *   [Invoices Index](#invoices-index)
-    *   [Fulltext Search](#fulltext-search)
-    *   [Invoice Detail](#invoice-detail)
-    *   [Download Invoice PDF](#download-invoice-pdf)
-    *   [Download Attachment](#download-attachment)
-    *   [Invoice Actions](#invoice-actions)
-    *   [Create Invoice](#create-invoice)
-    *   [Update Invoice](#update-invoice)
-    *   [Delete Invoice](#delete-invoice)
-*   [Invoice Payments](/api/v3/invoice-payments)
-*   [Invoice Messages](/api/v3/invoice-messages)
-*   [Expenses](/api/v3/expenses)
-*   [Expense Payments](/api/v3/expense-payments)
-*   [Inbox Files](/api/v3/inbox-files)
-*   [Inventory Items](/api/v3/inventory-items)
-*   [Inventory Moves](/api/v3/inventory-moves)
-*   [Generators](/api/v3/generators)
-*   [Recurring Generators](/api/v3/recurring-generators)
-*   [Events](/api/v3/events)
-*   [Todos](/api/v3/todos)
-*   [Webhooks](/api/v3/webhooks)
+- [Introduction](/api/v3)
+- [Changelog](/api/v3/changelog)
+- [Authorization](/api/v3/authorization)
+- [Users](/api/v3/users)
+- [Account](/api/v3/account)
+- [Bank Accounts](/api/v3/bank-accounts)
+- [Number Formats](/api/v3/number-formats)
+- [Subjects](/api/v3/subjects)
+- [Invoices](/api/v3/invoices)
+  - [Attributes](#attributes)
+  - [Invoices Index](#invoices-index)
+  - [Fulltext Search](#fulltext-search)
+  - [Invoice Detail](#invoice-detail)
+  - [Download Invoice PDF](#download-invoice-pdf)
+  - [Download Attachment](#download-attachment)
+  - [Invoice Actions](#invoice-actions)
+  - [Create Invoice](#create-invoice)
+  - [Update Invoice](#update-invoice)
+  - [Delete Invoice](#delete-invoice)
+- [Invoice Payments](/api/v3/invoice-payments)
+- [Invoice Messages](/api/v3/invoice-messages)
+- [Expenses](/api/v3/expenses)
+- [Expense Payments](/api/v3/expense-payments)
+- [Inbox Files](/api/v3/inbox-files)
+- [Inventory Items](/api/v3/inventory-items)
+- [Inventory Moves](/api/v3/inventory-moves)
+- [Generators](/api/v3/generators)
+- [Recurring Generators](/api/v3/recurring-generators)
+- [Events](/api/v3/events)
+- [Todos](/api/v3/todos)
+- [Webhooks](/api/v3/webhooks)
 
 # Invoices
 
-* * *
+---
 
 ## [Attributes](#attributes)
 
@@ -210,10 +210,10 @@ Subject address country (ISO code)
 `Boolean`
 
 Enable delivery address  
-Default: Inherit from client subject  
+Default: Inherit from client subject
 
-*   When creating invoice: If subject and invoice has delivery address enabled, the invoice delivery address is always copied from the subject delivery address.
-*   When updating invoice: Invoice delivery address can be changed when this attribute is `true`. Setting it to false will clear the invoice delivery address.
+- When creating invoice: If subject and invoice has delivery address enabled, the invoice delivery address is always copied from the subject delivery address.
+- When updating invoice: Invoice delivery address can be changed when this attribute is `true`. Setting it to false will clear the invoice delivery address.
 
 `client_delivery_name`
 
@@ -289,9 +289,9 @@ Generator ID from which the document was generated
 
 `Integer`
 
-*   When proforma: ID of related invoice
-*   When invoice: ID of related proforma (works both on read and write)
-*   When tax document: ID of related final invoice
+- When proforma: ID of related invoice
+- When invoice: ID of related proforma (works both on read and write)
+- When tax document: ID of related final invoice
 
 `paypal`
 
@@ -729,20 +729,19 @@ Read-only attribute
 
 Date and time of last document update
 
-*   Required attribute
-    
-    Required attribute (must always be present).
-    
-*   Read-only attribute
-    
-    Read-only attribute (cannot be changed).
-    
-*   Write-only attribute
-    
-    Write-only attribute (will not be returned).
-    
-*   Unmarked attributes are optional and can be omitted during request.
-    
+- Required attribute
+
+  Required attribute (must always be present).
+
+- Read-only attribute
+
+  Read-only attribute (cannot be changed).
+
+- Write-only attribute
+
+  Write-only attribute (will not be returned).
+
+- Unmarked attributes are optional and can be omitted during request.
 
 ### [Invoice Status Table](#invoice-status-table)
 
@@ -778,8 +777,8 @@ Invoice can no longer be paid and is thus uncollectible
 
 `vat_price_mode` settings is ignored in following cases:
 
-*   Account is set as non VAT payer.
-*   Reverse charge (`transferred_tax_liability`) is used.
+- Account is set as non VAT payer.
+- Reverse charge (`transferred_tax_liability`) is used.
 
 Attribute
 
@@ -842,11 +841,11 @@ Automatically issue an invoice that will be marked as paid.
 
 `final_invoice`
 
-Labelled _Invoice with edit_ on the web.  
+Labelled _Invoice with edit_ on the web.
 
-*   Invoice has be created manually (either via web or by calling [create API endpoint](#create-invoice)).
-*   Specify Query Parameter `related_id` to the proforma ID.
-*   It is necessary to copy the lines from the proforma into the new invoice but you are free to change/add or remove any line and the invoice total price will reflect the changes.
+- Invoice has be created manually (either via web or by calling [create API endpoint](#create-invoice)).
+- Specify Query Parameter `related_id` to the proforma ID.
+- It is necessary to copy the lines from the proforma into the new invoice but you are free to change/add or remove any line and the invoice total price will reflect the changes.
 
 `tax_document`
 
@@ -937,9 +936,9 @@ PKP code
 
 Evidence/register status:
 
-*   `waiting` – waiting for first response from EET server
-*   `pkp`: PKP code will be visible on the invoice
-*   `fik`: FIK code will be visible on the invoice
+- `waiting` – waiting for first response from EET server
+- `pkp`: PKP code will be visible on the invoice
+- `fik`: FIK code will be visible on the invoice
 
 `fik_received_at`
 
@@ -947,8 +946,8 @@ Date and time when FIK code was received from EET servers
 
 `external`
 
-*   `true`: The payment is recorded outside Fakturoid and required codes are specified via API
-*   `false`: Fakturoid handles the correct evidence of the payment
+- `true`: The payment is recorded outside Fakturoid and required codes are specified via API
+- `false`: Fakturoid handles the correct evidence of the payment
 
 `attempts`
 
@@ -1427,8 +1426,8 @@ The `unit_price_without_vat` and `unit_price_with_vat` attributes are read-only 
 
 The `unit_price_without_vat` and `unit_price_with_vat` attributes have the same value in the following cases:
 
-*   The VAT rate is set to 0.
-*   Reverse charge is enabled (if reverse charge is enabled on the document, `the vat_price_mode` setting is ignored).
+- The VAT rate is set to 0.
+- Reverse charge is enabled (if reverse charge is enabled on the document, `the vat_price_mode` setting is ignored).
 
 You can use [variables](https://www.fakturoid.cz/podpora/faktury/promenne-v-sablonach-faktur) in recurring generators for inserting dates to your text.
 
@@ -1985,9 +1984,9 @@ Invoice ID
 
 ## [Download Invoice PDF](#download-invoice-pdf)
 
-*   It takes a little while until the PDF is generated so if you do request the PDF before it is ready you will receive status `204 No Content` in which case you should wait a second or two and try again.
-*   If PDF is ready you will receive `200 OK` along with PDF contents in the response body.
-*   After invoice create or update you should wait a second or two again before requesting the PDF.
+- It takes a little while until the PDF is generated so if you do request the PDF before it is ready you will receive status `204 No Content` in which case you should wait a second or two and try again.
+- If PDF is ready you will receive `200 OK` along with PDF contents in the response body.
+- After invoice create or update you should wait a second or two again before requesting the PDF.
 
 `GET` `/accounts/{slug}/invoices/{id}/download.pdf`
 
@@ -2259,9 +2258,9 @@ Event name
 
 ## [Create Invoice](#create-invoice)
 
-*   After successful invoice creation, you will receive a `201 Created` response from the server, the `location` header will be set to the address of the newly created invoice.
-*   If invalid data is sent, you will receive a `422 Unprocessable Content` response from the server and a JSON with a list of errors in the sent data.
-*   In the case where no bank account is specified in Fakturoid account, the API returns a `403 Forbidden`. The body of the response will contain a description of the error with a link to the bank account settings (bank account cannot be entered via the API).
+- After successful invoice creation, you will receive a `201 Created` response from the server, the `location` header will be set to the address of the newly created invoice.
+- If invalid data is sent, you will receive a `422 Unprocessable Content` response from the server and a JSON with a list of errors in the sent data.
+- In the case where no bank account is specified in Fakturoid account, the API returns a `403 Forbidden`. The body of the response will contain a description of the error with a link to the bank account settings (bank account cannot be entered via the API).
 
 `POST` `/accounts/{slug}/invoices.json`
 
@@ -2390,9 +2389,9 @@ Account name
 
 ## [Update Invoice](#update-invoice)
 
-*   If invoice is successfully updated the server will respond with `200 OK` and a JSON body with its data.
-*   Request with invalid data will result in response `422 Unprocessable Content` with a JSON body describing errors found in the request.
-*   Trying to update a locked invoice will respond with `403 Forbidden`.
+- If invoice is successfully updated the server will respond with `200 OK` and a JSON body with its data.
+- Request with invalid data will result in response `422 Unprocessable Content` with a JSON body describing errors found in the request.
+- Trying to update a locked invoice will respond with `403 Forbidden`.
 
 `PATCH` `/accounts/{slug}/invoices/{id}.json`
 
@@ -2504,14 +2503,14 @@ Invoice ID
 
 ## [Delete Invoice](#delete-invoice)
 
-*   If successfully deleted the server will respond with status `204 No Content`.
-*   If invoice cannot be deleted the server will respond with status `422 Unprocessable Content`.  
-    Cases when the invoice cannot be deleted:
-    *   Proforma which already has a paid invoice connected to it.
-    *   Invoice which has a correction invoice connected to it.
-    *   Proforma which has tax documents connected to it.
-    *   Tax document which has invoice connected to it.
-    *   Document is locked.
+- If successfully deleted the server will respond with status `204 No Content`.
+- If invoice cannot be deleted the server will respond with status `422 Unprocessable Content`.  
+  Cases when the invoice cannot be deleted:
+  - Proforma which already has a paid invoice connected to it.
+  - Invoice which has a correction invoice connected to it.
+  - Proforma which has tax documents connected to it.
+  - Tax document which has invoice connected to it.
+  - Document is locked.
 
 `DELETE` `/accounts/{slug}/invoices/{id}.json`
 
@@ -2575,7 +2574,7 @@ Invoice ID
 }
 ```
 
-* * *
+---
 
 1.  [API v3](/api/v3)→
 2.  [Invoices](/api/v3/invoices)

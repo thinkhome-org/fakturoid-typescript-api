@@ -73,7 +73,12 @@ describe('SubjectsResource', () => {
         type: 'customer',
         webinvoice_history: 'recent',
       });
-      return Promise.resolve({ id: 10, name: 'New Co', type: 'customer', webinvoice_history: 'recent' });
+      return Promise.resolve({
+        id: 10,
+        name: 'New Co',
+        type: 'customer',
+        webinvoice_history: 'recent',
+      });
     });
 
     const http = { request: requestMock } as unknown as HttpClient;

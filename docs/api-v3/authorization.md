@@ -2,34 +2,34 @@ ZavÅÃ­t menu
 
 [Fakturoid web â](/)
 
-*   [Introduction](/api/v3)
-*   [Changelog](/api/v3/changelog)
-*   [Authorization](/api/v3/authorization)
-    *   [Authorization Code Flow](#authorization-code-flow)
-    *   [Client Credentials Flow](#client-credentials-flow)
-    *   [How to use access token](#how-to-use-access-token)
-*   [Users](/api/v3/users)
-*   [Account](/api/v3/account)
-*   [Bank Accounts](/api/v3/bank-accounts)
-*   [Number Formats](/api/v3/number-formats)
-*   [Subjects](/api/v3/subjects)
-*   [Invoices](/api/v3/invoices)
-*   [Invoice Payments](/api/v3/invoice-payments)
-*   [Invoice Messages](/api/v3/invoice-messages)
-*   [Expenses](/api/v3/expenses)
-*   [Expense Payments](/api/v3/expense-payments)
-*   [Inbox Files](/api/v3/inbox-files)
-*   [Inventory Items](/api/v3/inventory-items)
-*   [Inventory Moves](/api/v3/inventory-moves)
-*   [Generators](/api/v3/generators)
-*   [Recurring Generators](/api/v3/recurring-generators)
-*   [Events](/api/v3/events)
-*   [Todos](/api/v3/todos)
-*   [Webhooks](/api/v3/webhooks)
+- [Introduction](/api/v3)
+- [Changelog](/api/v3/changelog)
+- [Authorization](/api/v3/authorization)
+  - [Authorization Code Flow](#authorization-code-flow)
+  - [Client Credentials Flow](#client-credentials-flow)
+  - [How to use access token](#how-to-use-access-token)
+- [Users](/api/v3/users)
+- [Account](/api/v3/account)
+- [Bank Accounts](/api/v3/bank-accounts)
+- [Number Formats](/api/v3/number-formats)
+- [Subjects](/api/v3/subjects)
+- [Invoices](/api/v3/invoices)
+- [Invoice Payments](/api/v3/invoice-payments)
+- [Invoice Messages](/api/v3/invoice-messages)
+- [Expenses](/api/v3/expenses)
+- [Expense Payments](/api/v3/expense-payments)
+- [Inbox Files](/api/v3/inbox-files)
+- [Inventory Items](/api/v3/inventory-items)
+- [Inventory Moves](/api/v3/inventory-moves)
+- [Generators](/api/v3/generators)
+- [Recurring Generators](/api/v3/recurring-generators)
+- [Events](/api/v3/events)
+- [Todos](/api/v3/todos)
+- [Webhooks](/api/v3/webhooks)
 
 # Authorization
 
-* * *
+---
 
 Authorization is provided via OAuth 2.0. Fakturoid supports [Authorization Code Flow](#authorization-code-flow) and [Client Credentials Flow](#client-credentials-flow).
 
@@ -41,7 +41,7 @@ For development purposes, we recommend configuring your `hosts` file toÂ point
 
 ## [Authorization Code Flow](#authorization-code-flow)
 
-Before you can use Authorization Code Flow you need toÂ create an integration in Fakturoid. If you don't already have an account, [create aÂ new one](https://app.fakturoid.cz/pub/accounts/new). In your account, go toÂ _Settings â Connect other apps â OAuth 2 for app developers_ and create aÂ new integration.
+Before you can use Authorization Code Flow you need toÂ create an integration in Fakturoid. If you don't already have an account, [create aÂ new one](https://app.fakturoid.cz/pub/accounts/new). In your account, go toÂ *Settings â Connect other apps â OAuth 2 for app developers* and create aÂ new integration.
 
 After creating the integration you will receive **Client ID** and **Client Secret** which you will need toÂ use in the communication with API.
 
@@ -170,7 +170,7 @@ _Please set your user agent in the format of `YourApplicationName (your.email@ex
 `Authorization`
 
 HTTP Basic authentication  
-Example: `Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=` where `Y2xpâ¦ZXQ=` is urlsafe Base64-encoded string of `client_id:client_secret` (replace both client\_id and client\_secret with tokens obtained from your **integration** settings in Fakturoid).
+Example: `Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=` where `Y2xpâ¦ZXQ=` is urlsafe Base64-encoded string of `client_id:client_secret` (replace both client_id and client_secret with tokens obtained from your **integration** settings in Fakturoid).
 
 #### Body Attributes
 
@@ -273,7 +273,7 @@ _Please set your user agent in the format of `YourApplicationName (your.email@ex
 `Authorization`
 
 HTTP Basic authentication  
-Example: `Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=` where `Y2xpâ¦ZXQ=` is urlsafe Base64-encoded string of `client_id:client_secret` (replace both client\_id and client\_secret with tokens obtained from your **integration** settings in Fakturoid).
+Example: `Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=` where `Y2xpâ¦ZXQ=` is urlsafe Base64-encoded string of `client_id:client_secret` (replace both client_id and client_secret with tokens obtained from your **integration** settings in Fakturoid).
 
 #### Body Attributes
 
@@ -362,7 +362,7 @@ _Please set your user agent in the format of `YourApplicationName (your.email@ex
 `Authorization`
 
 HTTP Basic authentication  
-Example: `Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=` where `Y2xpâ¦ZXQ=` is urlsafe Base64-encoded string of `client_id:client_secret` (replace both client\_id and client\_secret with tokens obtained from your **integration** settings in Fakturoid).
+Example: `Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=` where `Y2xpâ¦ZXQ=` is urlsafe Base64-encoded string of `client_id:client_secret` (replace both client_id and client_secret with tokens obtained from your **integration** settings in Fakturoid).
 
 #### Body Attributes
 
@@ -427,7 +427,7 @@ _Please set your user agent in the format of `YourApplicationName (your.email@ex
 `Authorization`
 
 HTTP Basic authentication  
-Example: `Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=` where `Y2xpâ¦ZXQ=` is urlsafe Base64-encoded string of `client_id:client_secret` (replace both client\_id and client\_secret with tokens obtained from your **user** settings in Fakturoid).
+Example: `Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=` where `Y2xpâ¦ZXQ=` is urlsafe Base64-encoded string of `client_id:client_secret` (replace both client_id and client_secret with tokens obtained from your **user** settings in Fakturoid).
 
 #### Body Attributes
 
@@ -503,7 +503,7 @@ You will use it in the Authorization header like this:
 Authorization: Bearer 26e53aa3244b4c0aed56cb54a0223484e9c4aea49b09a03e4600ba995811b6af06428afc223c4c0c
 ```
 
-* * *
+---
 
 1.  [API v3](/api/v3)â
 2.  [Authorization](/api/v3/authorization)

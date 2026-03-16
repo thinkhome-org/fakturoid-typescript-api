@@ -2,37 +2,37 @@ Zavřít menu
 
 [Fakturoid web →](/)
 
-*   [Introduction](/api/v3)
-*   [Changelog](/api/v3/changelog)
-*   [Authorization](/api/v3/authorization)
-*   [Users](/api/v3/users)
-*   [Account](/api/v3/account)
-*   [Bank Accounts](/api/v3/bank-accounts)
-*   [Number Formats](/api/v3/number-formats)
-*   [Subjects](/api/v3/subjects)
-*   [Invoices](/api/v3/invoices)
-*   [Invoice Payments](/api/v3/invoice-payments)
-*   [Invoice Messages](/api/v3/invoice-messages)
-*   [Expenses](/api/v3/expenses)
-*   [Expense Payments](/api/v3/expense-payments)
-*   [Inbox Files](/api/v3/inbox-files)
-*   [Inventory Items](/api/v3/inventory-items)
-*   [Inventory Moves](/api/v3/inventory-moves)
-*   [Generators](/api/v3/generators)
-    *   [Attributes](#attributes)
-    *   [Generators Index](#generators-index)
-    *   [Generator Detail](#generator-detail)
-    *   [Create Generator](#create-generator)
-    *   [Update Generator](#update-generator)
-    *   [Delete Generator](#delete-generator)
-*   [Recurring Generators](/api/v3/recurring-generators)
-*   [Events](/api/v3/events)
-*   [Todos](/api/v3/todos)
-*   [Webhooks](/api/v3/webhooks)
+- [Introduction](/api/v3)
+- [Changelog](/api/v3/changelog)
+- [Authorization](/api/v3/authorization)
+- [Users](/api/v3/users)
+- [Account](/api/v3/account)
+- [Bank Accounts](/api/v3/bank-accounts)
+- [Number Formats](/api/v3/number-formats)
+- [Subjects](/api/v3/subjects)
+- [Invoices](/api/v3/invoices)
+- [Invoice Payments](/api/v3/invoice-payments)
+- [Invoice Messages](/api/v3/invoice-messages)
+- [Expenses](/api/v3/expenses)
+- [Expense Payments](/api/v3/expense-payments)
+- [Inbox Files](/api/v3/inbox-files)
+- [Inventory Items](/api/v3/inventory-items)
+- [Inventory Moves](/api/v3/inventory-moves)
+- [Generators](/api/v3/generators)
+  - [Attributes](#attributes)
+  - [Generators Index](#generators-index)
+  - [Generator Detail](#generator-detail)
+  - [Create Generator](#create-generator)
+  - [Update Generator](#update-generator)
+  - [Delete Generator](#delete-generator)
+- [Recurring Generators](/api/v3/recurring-generators)
+- [Events](/api/v3/events)
+- [Todos](/api/v3/todos)
+- [Webhooks](/api/v3/webhooks)
 
 # Generators
 
-* * *
+---
 
 ## [Attributes](#attributes)
 
@@ -329,8 +329,8 @@ Date and time of last template update
 
 `vat_price_mode` settings is ignored in following cases:
 
-*   Account is set as non VAT payer.
-*   Reverse charge (`transferred_tax_liability`) is used.
+- Account is set as non VAT payer.
+- Reverse charge (`transferred_tax_liability`) is used.
 
 Attribute
 
@@ -557,8 +557,8 @@ The `unit_price_without_vat` and `unit_price_with_vat` attributes are read-only 
 
 The `unit_price_without_vat` and `unit_price_with_vat` attributes have the same value in the following cases:
 
-*   The VAT rate is set to 0.
-*   Reverse charge is enabled (if reverse charge is enabled on the document, `the vat_price_mode` setting is ignored).
+- The VAT rate is set to 0.
+- Reverse charge is enabled (if reverse charge is enabled on the document, `the vat_price_mode` setting is ignored).
 
 You can use [variables](https://www.fakturoid.cz/podpora/faktury/promenne-v-sablonach-faktur) in recurring generators for inserting dates to your text.
 
@@ -687,20 +687,19 @@ Read-only attribute
 
 BIC (for SWIFT payments)
 
-*   Required attribute
-    
-    Required attribute (must always be present).
-    
-*   Read-only attribute
-    
-    Read-only attribute (cannot be changed).
-    
-*   Write-only attribute
-    
-    Write-only attribute (will not be returned).
-    
-*   Unmarked attributes are optional and can be omitted during request.
-    
+- Required attribute
+
+  Required attribute (must always be present).
+
+- Read-only attribute
+
+  Read-only attribute (cannot be changed).
+
+- Write-only attribute
+
+  Write-only attribute (will not be returned).
+
+- Unmarked attributes are optional and can be omitted during request.
 
 ## [Generators Index](#generators-index)
 
@@ -970,9 +969,9 @@ Generator ID
 
 ## [Create Generator](#create-generator)
 
-*   After successful template creation, you will receive a `201 Created` response from the server, the `location` header will be set to the address of the newly created template.
-*   If non-valid data is sent, you will receive a `422 Unprocessable Content` response from the server and a JSON with a list of errors in the sent data.
-*   In the case where no bank account is specified in Fakturoid account, the API returns a `403 Forbidden`. The body of the response will contain a description of the error with a link to the bank account settings (bank account cannot be entered via the API).
+- After successful template creation, you will receive a `201 Created` response from the server, the `location` header will be set to the address of the newly created template.
+- If non-valid data is sent, you will receive a `422 Unprocessable Content` response from the server and a JSON with a list of errors in the sent data.
+- In the case where no bank account is specified in Fakturoid account, the API returns a `403 Forbidden`. The body of the response will contain a description of the error with a link to the bank account settings (bank account cannot be entered via the API).
 
 `POST` `/accounts/{slug}/generators.json`
 
@@ -1144,8 +1143,8 @@ Value
 
 ## [Update Generator](#update-generator)
 
-*   If generator is successfully updated the server will respond with `200 OK` and a JSON body with its data.
-*   Request with invalid data will result in response `422 Unprocessable Content` with a JSON body describing errors found in the request.
+- If generator is successfully updated the server will respond with `200 OK` and a JSON body with its data.
+- Request with invalid data will result in response `422 Unprocessable Content` with a JSON body describing errors found in the request.
 
 `PATCH` `/accounts/{slug}/generators/{id}.json`
 
@@ -1354,7 +1353,7 @@ Generator ID
 
 `Status` `204 No Content`
 
-* * *
+---
 
 1.  [API v3](/api/v3)→
 2.  [Generators](/api/v3/generators)

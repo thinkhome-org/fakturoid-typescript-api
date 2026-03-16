@@ -69,9 +69,7 @@ export class WebhooksResource {
   public async list(options: ListWebhooksOptions = {}): Promise<Webhook[]> {
     const { accessToken, slug } = await this.getAuth();
     const query =
-      options.page != null
-        ? new URLSearchParams({ page: String(options.page) })
-        : undefined;
+      options.page != null ? new URLSearchParams({ page: String(options.page) }) : undefined;
     return this.http.request<Webhook[]>({
       method: 'GET',
       path: `/api/v3/accounts/${slug}/webhooks.json`,
@@ -85,9 +83,7 @@ export class WebhooksResource {
    * Returns an array of webhook events that failed to be delivered.
    * @see https://www.fakturoid.cz/api/v3/webhooks#failed-webhook-deliveries
    */
-  public async getFailedDeliveries(
-    failedDeliveriesUuid: string,
-  ): Promise<WebhookFailedDelivery[]> {
+  public async getFailedDeliveries(failedDeliveriesUuid: string): Promise<WebhookFailedDelivery[]> {
     const { accessToken, slug } = await this.getAuth();
     return this.http.request<WebhookFailedDelivery[]>({
       method: 'GET',
@@ -138,7 +134,9 @@ export class WebhooksResource {
    * Async generator that iterates through all pages of webhooks.
    * Yields individual webhooks. Use with `for await...of`.
    */
-  public listAll(options: Omit<ListWebhooksOptions, 'page'> = {}): AsyncGenerator<Webhook, void, undefined> {
+  public listAll(
+    options: Omit<ListWebhooksOptions, 'page'> = {}
+  ): AsyncGenerator<Webhook, void, undefined> {
     return paginateAll((page) => this.list({ ...options, page }));
   }
 }

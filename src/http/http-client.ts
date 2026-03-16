@@ -75,7 +75,7 @@ async function withConcurrencyLimit<T>(
   maxConcurrency: number,
   waitQueue: Array<() => void>,
   activeCount: { current: number },
-  fn: () => Promise<T>,
+  fn: () => Promise<T>
 ): Promise<T> {
   if (activeCount.current >= maxConcurrency) {
     await new Promise<void>((resolve) => {
@@ -108,8 +108,7 @@ export class HttpClient {
   public constructor(options: HttpClientOptions) {
     this.baseUrl = options.baseUrl.replace(/\/+$/, '');
     this.userAgent = options.userAgent;
-    this.requestTimeoutMs =
-      options.requestTimeoutMs ?? DEFAULT_REQUEST_TIMEOUT_MS;
+    this.requestTimeoutMs = options.requestTimeoutMs ?? DEFAULT_REQUEST_TIMEOUT_MS;
     this.maxConcurrency = options.maxConcurrency;
   }
 
@@ -131,7 +130,7 @@ export class HttpClient {
   private async executeOneAttempt(
     url: URL,
     options: AuthorizedRequestOptions,
-    headers: Record<string, string>,
+    headers: Record<string, string>
   ): Promise<Response> {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), this.requestTimeoutMs);
@@ -151,10 +150,7 @@ export class HttpClient {
     } catch (err) {
       clearTimeout(timeoutId);
       if (err instanceof Error && err.name === 'AbortError') {
-        throw new FakturoidApiError(
-          408,
-          `Request timed out after ${this.requestTimeoutMs}ms`,
-        );
+        throw new FakturoidApiError(408, `Request timed out after ${this.requestTimeoutMs}ms`);
       }
       throw err;
     }
@@ -166,7 +162,7 @@ export class HttpClient {
    */
   private async executeWithRetry(
     options: AuthorizedRequestOptions,
-    headers: Record<string, string>,
+    headers: Record<string, string>
   ): Promise<Response> {
     const url = this.buildUrl(options);
     let attempt = 0;
@@ -178,9 +174,7 @@ export class HttpClient {
         await consumeResponseBody(response);
         const fallbackDelay = RETRY_BASE_DELAY_MS * 2 ** attempt;
         const delay =
-          response.status === 429
-            ? get429RetryDelayMs(response, fallbackDelay)
-            : fallbackDelay;
+          response.status === 429 ? get429RetryDelayMs(response, fallbackDelay) : fallbackDelay;
         await new Promise((resolve) => setTimeout(resolve, delay));
         attempt += 1;
         continue;
@@ -190,15 +184,13 @@ export class HttpClient {
     }
   }
 
-  private async runWithOptionalConcurrencyLimit<T>(
-    fn: () => Promise<T>,
-  ): Promise<T> {
+  private async runWithOptionalConcurrencyLimit<T>(fn: () => Promise<T>): Promise<T> {
     if (this.maxConcurrency != null && this.maxConcurrency > 0) {
       return withConcurrencyLimit(
         this.maxConcurrency,
         this.concurrencyWaitQueue,
         this.concurrencyActive,
-        fn,
+        fn
       );
     }
     return fn();

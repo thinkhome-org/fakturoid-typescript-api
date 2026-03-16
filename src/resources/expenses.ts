@@ -242,7 +242,7 @@ export class ExpensesResource {
    */
   public async downloadAttachment(
     expenseId: number,
-    attachmentId: number,
+    attachmentId: number
   ): Promise<ArrayBuffer | null> {
     const { accessToken, slug } = await this.getAuth();
     const response = await this.http.requestRaw({
@@ -258,7 +258,9 @@ export class ExpensesResource {
    * Async generator that iterates through all pages of expenses.
    * Yields individual expenses. Use with `for await...of`.
    */
-  public listAll(options: Omit<ListExpensesOptions, 'page'> = {}): AsyncGenerator<Expense, void, undefined> {
+  public listAll(
+    options: Omit<ListExpensesOptions, 'page'> = {}
+  ): AsyncGenerator<Expense, void, undefined> {
     return paginateAll((page) => this.list({ ...options, page }));
   }
 }
